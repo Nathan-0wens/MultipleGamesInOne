@@ -1,17 +1,18 @@
 using System;
-// Single Pile Nim Code
 namespace Games_CSharp
 {
+    //Single Pile Nim Code
 	internal class SinglePileNIM
 	{
     	public static void Main(string[] args)
     	{
-        	// Init variables
+        	//Piles and taking from them
         	Random ran = new Random();
         	int currentNum = ran.Next(10, 100);
         	int takeAmount = 0;
         	int maxTake;
-
+        	
+            //Winning and game ending
         	int whoseTurn = 1;
         	bool gameIsOver;
         	bool gameLoop = true;
@@ -108,36 +109,38 @@ namespace Games_CSharp
     	}
 	}
 // Multiple Pile Nim Code
-	internal class MultiPileNIM
+	internal class MultiplePileNIM
 	{
     	public static void Main(string[] args)
     	{
-        // Init variables
+        //Creating the amount of tokens
         Random ran = new Random();
 		int pilenumber = 0;
 		int currentNum1 = ran.Next(10, 20);
 		int currentNum2 = ran.Next(10, 20);
 		int currentNum3 = ran.Next(10, 20);
 
+        //The piles
 		int pile1 = currentNum1;
 		int pile2 = currentNum2;
 		int pile3 = currentNum3;
 
-
+        //Helps ai to play better and simplifies code a lot
 		int pile12 = currentNum1 + currentNum2;
 
+        //Int variables
     	int takeAmount1 = 0;
 		int takeAmount2 = 0;
 		int takeAmount3 = 0;
-
         int maxTake1;
 		int maxTake2;
 		int maxTake3;
-
-        	int whoseTurn = 1;
-        	bool gameIsOver;
-        	bool gameLoop = true;
-        	bool validInput;
+		int whoseTurn = 1;
+		
+		//Bools for ending the game
+        bool gameIsOver;
+        bool gameLoop = true;
+        bool validInput;
 
 
         	// Main Game Loop
