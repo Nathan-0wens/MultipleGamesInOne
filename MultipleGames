@@ -1,0 +1,387 @@
+using System;
+// Single Pile Nim Code
+namespace Games_CSharp
+{
+	internal class SinglePileNIM
+	{
+    	public static void Main(string[] args)
+    	{
+        	// Init variables
+        	Random ran = new Random();
+        	int currentNum = ran.Next(10, 100);
+        	int takeAmount = 0;
+        	int maxTake;
+
+        	int whoseTurn = 1;
+        	bool gameIsOver;
+        	bool gameLoop = true;
+        	bool validInput;
+
+
+        	// Main Game Loop
+        	if (gameLoop == true)
+        	{
+            	// Setup
+            	maxTake = Math.Min(3, currentNum);
+            	gameIsOver = false;
+
+            	Console.WriteLine("Single Pile NIM\n---------------\n");
+
+            	//Session Loop
+            	while (!gameIsOver)
+            	{
+                	// Player's Turn
+                	validInput = false;
+                	whoseTurn = 1;
+
+                	if (!validInput)
+                	{
+                    	//Get an integer
+                    	while (true)
+                    	{
+                        	Console.WriteLine("Remaining total is: {0}", currentNum);
+                        	Console.WriteLine("How much will you take (1-{0})?", maxTake);
+
+                        	bool success = int.TryParse(Console.ReadLine(), out takeAmount);
+
+                        	if (success)
+                            	break;
+                        	else
+                            	Console.WriteLine("Invalid amount!\n");
+                    	}
+
+                    	// Check to see if input is within the valid range
+                    	if (takeAmount > 0 && takeAmount <= maxTake)
+                        	validInput = true;
+
+                    	else
+                        	Console.WriteLine("Invalid amount!\n");
+                	}
+
+                	Console.WriteLine("You took {0}.\n", takeAmount);
+                	currentNum -= takeAmount;
+
+                	if (currentNum <= 0)
+                    	gameIsOver = true;
+
+                	else
+                	{
+                    	//Computer's turn
+                    	whoseTurn = 2;
+                    	if (currentNum > 1)
+                    	{
+                        	int pizza = currentNum + 3;
+                        	if (pizza % 4 == 0)
+                        	{
+                            	takeAmount = 3;
+                        	}
+                        	else
+                        	{
+                            	takeAmount = Math.Min(pizza % 4, currentNum - 1);
+                            	Console.WriteLine("I will take {0}.\n", takeAmount);
+                        	}
+                    	}
+                    	else
+                    	{
+                        	takeAmount = 1;
+                        	Console.WriteLine("I will take {0}.\n", takeAmount);
+                    	}
+                    	currentNum -= takeAmount;
+
+                    	if (currentNum <= 0)
+                        	gameIsOver = true;
+                	}
+            	}
+
+            	// Determine the winner
+            	if (whoseTurn == 1)
+                	Console.WriteLine("I win, You lose.");
+
+            	else
+                	Console.WriteLine("You win, I lose.");
+
+        	}
+        	else
+        	{
+            	Console.WriteLine("\nGoodbye!");
+        	}
+    	}
+	}
+// Multiple Pile Nim Code
+	internal class MultiPileNIM
+	{
+    	public static void Main(string[] args)
+    	{
+        // Init variables
+        Random ran = new Random();
+		int pilenumber = 0;
+		int currentNum1 = ran.Next(10, 20);
+		int currentNum2 = ran.Next(10, 20);
+		int currentNum3 = ran.Next(10, 20);
+
+		int pile1 = currentNum1;
+		int pile2 = currentNum2;
+		int pile3 = currentNum3;
+
+
+		int pile12 = currentNum1 + currentNum2;
+
+    	int takeAmount1 = 0;
+		int takeAmount2 = 0;
+		int takeAmount3 = 0;
+
+        int maxTake1;
+		int maxTake2;
+		int maxTake3;
+
+        	int whoseTurn = 1;
+        	bool gameIsOver;
+        	bool gameLoop = true;
+        	bool validInput;
+
+
+        	// Main Game Loop
+        	if (gameLoop == true)
+        	{
+        	Console.WriteLine("If you try to take more than is allowed, then it will use modular arithmetic to become a number that is allowed.");
+            // Setup
+            gameIsOver = false;
+
+            Console.WriteLine("Multiple Pile Nim");
+
+            	//Session Loop
+            	while (!gameIsOver)
+            	{
+				maxTake1 = Math.Min(5, currentNum1);
+				maxTake2 = Math.Min(5, currentNum2);
+				maxTake3 = Math.Min(5, currentNum3);
+                // Player's Turn
+                validInput = false;
+                whoseTurn = 1;
+                	if (!validInput)
+                	{
+                    //Get an integer
+                    	while (true)
+                    	{
+			Console.WriteLine("Remaining total from the first pile is: {0}", currentNum1);
+            Console.WriteLine("Remaining total from the second pile is: {0}", currentNum2);
+            Console.WriteLine("Remaining total from the third pile is: {0}", currentNum3);
+			Console.WriteLine("Which pile do you want to take from? 1-3");
+			int.TryParse(Console.ReadLine(), out pilenumber);
+				if (pilenumber == 1)
+				{
+					Console.WriteLine("You are taking from pile one. How many tokens do you take (1 - {0})?", maxTake1);
+					bool success1 = int.TryParse(Console.ReadLine(), out takeAmount1);
+					if (success1)
+					{
+						if (takeAmount1 > 5 || takeAmount1 < 0)
+						{
+							takeAmount1 = takeAmount1 % 6;
+							if (takeAmount1 == 0)
+							{
+								takeAmount1 = 5;
+							}
+						}
+						takeAmount2 = 0;
+						takeAmount3 = 0;
+						break;
+					}
+					else
+					{
+						Console.WriteLine("Invalid amount!");
+					}
+					if (takeAmount1 > 0 && takeAmount1 <= maxTake1) 
+					{
+                    validInput = true;
+					}
+
+                    else
+					{
+                    Console.WriteLine("Invalid amount!\n");
+					validInput = false;
+                	}
+				}
+				else if (pilenumber == 2)
+				{
+					Console.WriteLine("You are taking from pile two. How many tokens do you take (1 - {0})?", maxTake2);
+					bool success2 = int.TryParse(Console.ReadLine(), out takeAmount2);
+					if (success2)
+					{
+						takeAmount1 = 0;
+						if (takeAmount2 > 5 || takeAmount2 < 0)
+						{
+						takeAmount2 = takeAmount2 % 6;
+						if (takeAmount2 == 0)
+						{
+						takeAmount2 = 5;
+						}
+						}
+						takeAmount3 = 0;
+						break;
+					}
+					else
+					{
+						Console.WriteLine("Invalid amount!");
+					}
+					if (takeAmount2 > 0 && takeAmount2 <= maxTake2) 
+					{
+                    validInput = true;
+					}
+
+                    else
+					{
+                    Console.WriteLine("Invalid amount!\n");
+					validInput = false;
+                	}
+				}
+				else if (pilenumber == 3)
+				{
+					Console.WriteLine("You are taking from pile three. How many tokens do you take (1 - {0})?", maxTake3);
+					bool success3 = int.TryParse(Console.ReadLine(), out takeAmount3);
+					if (success3)
+					{
+						takeAmount1 = 0;
+						takeAmount2 = 0;
+						if (takeAmount3 > 5 || takeAmount3 < 0)
+						{
+						takeAmount3 = takeAmount3 % 6;
+						if (takeAmount3 == 0)
+						{
+						takeAmount3 = 5;
+						}
+						}
+						break;
+					}
+					else
+					{
+						Console.WriteLine("Invalid amount!");
+					}
+					if (takeAmount3 > 0 && takeAmount3 <= maxTake3) 
+					{
+                    validInput = true;
+					}
+
+                    else
+					{
+                    Console.WriteLine("Invalid amount!\n");
+					validInput = false;
+                	}
+				}
+				else
+				{
+				Console.WriteLine("invalid pile");
+				}
+						}
+    				}
+                Console.WriteLine("You took from pile 1: {0}.\n", takeAmount1);
+                Console.WriteLine("You took from pile 2: {0}.\n", takeAmount2);
+                Console.WriteLine("You took from pile 3: {0}.\n", takeAmount3);
+                currentNum1 -= takeAmount1;
+                currentNum2 -= takeAmount2;
+                currentNum3 -= takeAmount3;
+				if (currentNum1 <= 0 && currentNum2 <= 0 && currentNum3 <= 0)
+				{
+                    gameIsOver = true;
+				}
+				else
+                {
+                //Computer's turn
+                whoseTurn = 2;
+                	if (pile12 > currentNum3)
+                	{
+						if (currentNum1 > currentNum2)
+						{
+                       		takeAmount1 = Math.Max(1, currentNum1 + currentNum2 - currentNum3) % 6;
+							if (takeAmount1 == 0)
+							{
+								takeAmount1 = 5;
+							}
+							takeAmount2 = 0;
+							takeAmount3 = 0;
+                        	Console.WriteLine("I will take from the first pile: {0}.\n", takeAmount1);
+						}
+						else if (currentNum2 > currentNum1)
+						{
+							takeAmount1 = 0;
+                   			takeAmount2 = Math.Max(1, currentNum1 + currentNum2 - currentNum3) % 6;
+							if (takeAmount2 == 0)
+							{
+								takeAmount2 = 0;
+							}
+							takeAmount3 = 0;
+                   			Console.WriteLine("I will take from the second pile: {0}.\n", takeAmount2);
+						}
+						else
+						{
+							takeAmount1 = 1;
+							takeAmount2 = 0;
+							takeAmount3 = 0;
+							Console.WriteLine("I will take from the first pile: {0}.\n", takeAmount1);
+						}
+
+                	}
+					else if (pile12 < currentNum3)
+                			{
+
+						if (currentNum3 > currentNum2)
+						{
+							takeAmount1 = 0;
+							takeAmount2 = 0;
+                        				takeAmount3 = Math.Max(1, currentNum3 - currentNum2 - currentNum1) % 6;
+								if (takeAmount3 == 0)
+								{
+								takeAmount3 = 5;
+								}
+                        				Console.WriteLine("I will take from the third pile: {0}.\n", takeAmount3);
+						}
+						else
+						{
+
+						}
+                			}
+                			else
+                			{
+						if (currentNum1 != 0 && currentNum1 >= currentNum2 && currentNum1 >= currentNum3)
+						{
+                        				takeAmount1 = 1;
+							takeAmount2 = 0;
+							takeAmount3 = 0;
+                        	Console.WriteLine("I will take from the first pile: {0}.\n", takeAmount1);
+						}
+						else if (currentNum2 != 0 && currentNum2 >= currentNum1 && currentNum2 >= currentNum3)
+						{
+							takeAmount1 = 0;
+                        				takeAmount2 = 0;
+							takeAmount3 = 1;
+                        	Console.WriteLine("I will take from the second pile: {0}.\n", takeAmount2);
+						}
+						else
+						{
+							takeAmount1 = 0;
+							takeAmount2 = 1;
+                     					takeAmount3 = 0;
+                        	Console.WriteLine("I will take {0}.\n", takeAmount3);
+						}
+                			}
+                		currentNum1 -= takeAmount1;
+				currentNum2 -= takeAmount2;
+				currentNum3 -= takeAmount3;
+
+                	if (currentNum1 == 0 && currentNum2 == 0 && currentNum3 == 0)
+					{
+                    	gameIsOver = true;
+			if(whoseTurn == 1)
+			{
+			Console.WriteLine("I win, you loose.");
+			}
+			else
+			{
+			Console.WriteLine("I loose, you win.");
+			}
+					}
+                }
+				}
+			}
+		}
+	}
+}
