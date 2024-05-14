@@ -6,6 +6,11 @@ namespace Games_CSharp
 	{
     	public static void Main(string[] args)
     	{
+    	    int gamenumber = 0;
+		Console.WriteLine("Which game do you want to play? Press 1 for Single Pile Nim and 2 for Multiple Pile Nim.");
+		gamenumber = Convert.ToInt32(int.TryParse(Console.ReadLine(), out gamenumber));
+		if (gamenumber == 1)
+		{
         	//Piles and taking from them
         	Random ran = new Random();
         	int currentNum = ran.Next(10, 100);
@@ -107,12 +112,9 @@ namespace Games_CSharp
             	Console.WriteLine("\nGoodbye!");
         	}
     	}
-	}
 // Multiple Pile Nim Code
-	internal class MultiplePileNIM
+	if (gamenumber == 2)
 	{
-    	public static void Main(string[] args)
-    	{
         //Creating the amount of tokens
         Random ran = new Random();
 		int pilenumber = 0;
@@ -385,6 +387,7 @@ namespace Games_CSharp
                 }
 				}
 			}
-		}
 	}
+}
+}
 }
