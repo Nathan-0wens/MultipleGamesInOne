@@ -2,7 +2,7 @@ using System;
 namespace Games_CSharp
 {
     //Single Pile Nim Code
-	internal class SinglePileNIM
+	internal class MultipleGames
 	{
     	public static void Main(string[] args)
     	{
