@@ -113,7 +113,7 @@ namespace Games_CSharp
         	}
     	}
 // Multiple Pile Nim Code
-	if (gamenumber == 2)
+	else if (gamenumber == 2)
 	{
         //Creating the amount of tokens
         Random ran = new Random();
