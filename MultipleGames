@@ -7,7 +7,7 @@ namespace Games_CSharp
     	public static void Main(string[] args)
     	{
     	    string gamenumber = "";
-		Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim or Multiple Pile Nim");
+		Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim or Multiple Pile Nim, please type in the full name correctly.");
 		gamenumber = Console.ReadLine();
 		if (gamenumber == "Single Pile Nim")
 		{
