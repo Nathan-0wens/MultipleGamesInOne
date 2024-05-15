@@ -1,3 +1,6 @@
+//Author: Nathan Owens
+//Date in day/month/year format for newest update: 15/5/2024
+//I suggest you copy the Single Pile Nim or the Multiple Pile Nim from the text the console wrote at the start that way you won't mistype it
 using System;
 namespace Games_CSharp
 {
@@ -6,7 +9,7 @@ namespace Games_CSharp
 	{
     	public static void Main(string[] args)
     	{
-    	    string gamenumber = "";
+    	string gamenumber = "";
 		Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim or Multiple Pile Nim, please type in the full name correctly.");
 		gamenumber = Console.ReadLine();
 		if (gamenumber == "Single Pile Nim")
@@ -51,25 +54,33 @@ namespace Games_CSharp
                         	bool success = int.TryParse(Console.ReadLine(), out takeAmount);
 
                         	if (success)
+							{
                             	break;
+							}
                         	else
+							{
                             	Console.WriteLine("Invalid amount!\n");
+							}
                     	}
 
                     	// Check to see if input is within the valid range
                     	if (takeAmount > 0 && takeAmount <= maxTake)
+						{
                         	validInput = true;
-
+						}
                     	else
+						{
                         	Console.WriteLine("Invalid amount!\n");
+						}
                 	}
 
                 	Console.WriteLine("You took {0}.\n", takeAmount);
                 	currentNum -= takeAmount;
 
                 	if (currentNum <= 0)
+					{
                     	gameIsOver = true;
-
+					}
                 	else
                 	{
                     	//Computer's turn
@@ -95,7 +106,9 @@ namespace Games_CSharp
                     	currentNum -= takeAmount;
 
                     	if (currentNum <= 0)
+						{
                         	gameIsOver = true;
+						}
                 	}
             	}
 
@@ -146,7 +159,7 @@ namespace Games_CSharp
         bool validInput;
 
 
-        	// Main Game Loop
+        	// Main Game Loop for multiple pile nim
         	if (gameLoop == true)
         	{
         	Console.WriteLine("If you try to take more than is allowed, then it will use modular arithmetic to become a number that is allowed.");
@@ -169,11 +182,11 @@ namespace Games_CSharp
                     //Get an integer
                     	while (true)
                     	{
-			Console.WriteLine("Remaining total from the first pile is: {0}", currentNum1);
-           		Console.WriteLine("Remaining total from the second pile is: {0}", currentNum2);
+					Console.WriteLine("Remaining total from the first pile is: {0}", currentNum1);
+           			Console.WriteLine("Remaining total from the second pile is: {0}", currentNum2);
             		Console.WriteLine("Remaining total from the third pile is: {0}", currentNum3);
-			Console.WriteLine("Which pile do you want to take from? 1-3");
-			int.TryParse(Console.ReadLine(), out pilenumber);
+					Console.WriteLine("Which pile do you want to take from? 1-3");
+					int.TryParse(Console.ReadLine(), out pilenumber);
 				if (pilenumber == 1)
 				{
 					Console.WriteLine("You are taking from pile one. How many tokens do you take (1 - {0})?", maxTake1);
