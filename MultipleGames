@@ -369,7 +369,7 @@ namespace Games_CSharp
                         	Console.WriteLine("I will take {0}.\n", takeAmount2);
 						}
                 			}
-                		currentNum1 -= takeAmount1;
+                currentNum1 -= takeAmount1;
 				currentNum2 -= takeAmount2;
 				currentNum3 -= takeAmount3;
 			if (currentNum 1 < 0)
@@ -385,7 +385,7 @@ namespace Games_CSharp
 				currentNum1 = 0;
 				}
 			}
-			if (currentNum 2 < 0)
+			else if (currentNum 2 < 0)
 			{
 				if (currentNum 1 < currentNum3)
 				{
@@ -398,7 +398,7 @@ namespace Games_CSharp
 				currentNum2 = 0;
 				}
 			}
-			if (currentNum 3 < 0)
+			else if (currentNum3 < 0)
 			{
 				if (currentNum 1 < currentNum2)
 				{
