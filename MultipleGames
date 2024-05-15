@@ -372,9 +372,9 @@ namespace Games_CSharp
                 currentNum1 -= takeAmount1;
 				currentNum2 -= takeAmount2;
 				currentNum3 -= takeAmount3;
-			if (currentNum 1 < 0)
+			if (currentNum1 < 0)
 			{
-				if (currentNum 2 < currentNum3)
+				if (currentNum2 < currentNum3)
 				{
 				currentNum3 += currentNum1;
 				currentNum1 = 0;
@@ -385,9 +385,9 @@ namespace Games_CSharp
 				currentNum1 = 0;
 				}
 			}
-			else if (currentNum 2 < 0)
+			else if (currentNum2 < 0)
 			{
-				if (currentNum 1 < currentNum3)
+				if (currentNum1 < currentNum3)
 				{
 				currentNum3 += currentNum2;
 				currentNum2 = 0;
@@ -400,7 +400,7 @@ namespace Games_CSharp
 			}
 			else if (currentNum3 < 0)
 			{
-				if (currentNum 1 < currentNum2)
+				if (currentNum1 < currentNum2)
 				{
 				currentNum2 += currentNum3;
 				currentNum3 = 0;
