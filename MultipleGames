@@ -10,7 +10,9 @@ namespace Games_CSharp
         {
             string gamenumber = "";
             Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim or Multiple Pile Nim, please type in the full name correctly.");
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             gamenumber = Console.ReadLine();
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             if (gamenumber == "Single Pile Nim")
             {
                 //Piles and taking from them
