@@ -6,7 +6,8 @@ namespace Games_CSharp
     //Single Pile Nim Code
     internal class MultipleGames
     {
-        public static void Main(string[] args)
+
+        public static void Main(string[] Games)
         {
             string gamenumber = "";
             Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim or Multiple Pile Nim, please type in the full name correctly.");
@@ -16,7 +17,7 @@ namespace Games_CSharp
             if (gamenumber == "Single Pile Nim")
             {
                 //Piles and taking from them
-                Random ran = new Random();
+                Random ran = new();
                 int currentNum = ran.Next(10, 100);
                 int takeAmount = 0;
                 int maxTake;
@@ -131,7 +132,7 @@ namespace Games_CSharp
             {
                 Console.WriteLine("Multiple Pile Nim \n ----------------- \n");
                 //Creating the amount of tokens
-                Random ran = new Random();
+                Random ran = new();
                 int pilenumber = 0;
                 int currentNum1 = ran.Next(10, 20);
                 int currentNum2 = ran.Next(10, 20);
@@ -187,6 +188,7 @@ namespace Games_CSharp
                                 Console.WriteLine("Remaining total from the third pile is: {0}", currentNum3);
                                 Console.WriteLine("Which pile do you want to take from? 1-3");
                                 int.TryParse(Console.ReadLine(), out pilenumber);
+
                                 if (pilenumber == 1)
                                 {
                                     Console.WriteLine("You are taking from pile one. How many tokens do you take (1 - {0})?", maxTake1);
@@ -195,7 +197,7 @@ namespace Games_CSharp
                                     {
                                         if (takeAmount1 > 5 || takeAmount1 < 0)
                                         {
-                                            takeAmount1 = takeAmount1 % 6;
+                                            takeAmount1 %= 6;
                                             if (takeAmount1 == 0)
                                             {
                                                 takeAmount1 = 5;
@@ -229,7 +231,7 @@ namespace Games_CSharp
                                         takeAmount1 = 0;
                                         if (takeAmount2 > 5 || takeAmount2 < 0)
                                         {
-                                            takeAmount2 = takeAmount2 % 6;
+                                            takeAmount2 %= 6;
                                             if (takeAmount2 == 0)
                                             {
                                                 takeAmount2 = 5;
@@ -263,7 +265,7 @@ namespace Games_CSharp
                                         takeAmount2 = 0;
                                         if (takeAmount3 > 5 || takeAmount3 < 0)
                                         {
-                                            takeAmount3 = takeAmount3 % 6;
+                                            takeAmount3 %= 6;
                                             if (takeAmount3 == 0)
                                             {
                                                 takeAmount3 = 5;
