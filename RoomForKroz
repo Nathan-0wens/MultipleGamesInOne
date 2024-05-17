@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace Games_CSharp
+{
+    public class Room
+    {
+        public string name = "no name yet";
+        public string description = "no description yet";
+        public Room(string name, string description)
+        {
+            this.name = name;
+            this.description = description;
+        }
+
+        public string getName()
+        {
+            return name;
+        }
+        public string getDescription()
+        {
+            return description;
+        }
+    }
+}

@@ -1,6 +1,10 @@
-//Date in day/month/year format for newest update: 16/5/2024
+//Date in day/month/year format for newest update: 17/5/2024
 //I suggest you copy the Single Pile Nim or the Multiple Pile Nim from the text the console wrote at the start that way you won't mistype it.
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 namespace Games_CSharp
 {
     //Single Pile Nim Code
@@ -10,7 +14,7 @@ namespace Games_CSharp
         public static void Main(string[] Games)
         {
             string gamenumber = "";
-            Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim or Multiple Pile Nim, please type in the full name correctly.");
+            Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim or Kroz, please type in the full name correctly.");
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             gamenumber = Console.ReadLine();
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
@@ -441,6 +445,154 @@ namespace Games_CSharp
                         }
                     }
                 }
+            }
+            else if (gamenumber == "Kroz")
+            {
+            public bool key = false;
+            public bool leaf = false;
+            public bool hat = false;
+            public bool chicken = false;
+            public bool beenVisited = false;
+            public int countMistakes = 0;
+            public int x = 0;
+            public int y = 0;
+            Room startingPoint = new Room("Entry Way", "You are in a lovely marble enterance to the Library");
+            Room r1 = new Room("Field", "Lovely Place to Be");
+            Room r2 = new Room("Elm Stree", "Its Scary");
+            Room r3 = new Room("House", "It is tiny and white");
+            Room r4 = new Room("School", "There are a lot of textbooks and a window");
+            public void introText() 
+            {
+             Console.WriteLine(outputBox.Text = startingPoint.getName() + Environment.NewLine + startingPoint.getDescription());   
+            }
+            public void enterCommand(String command) 
+            {
+                           if (command.Equals("look"))
+            {
+                outputBox.Text = "You see some stars";
+                countMistakes = countMistakes + 1;
+            }
+            else if (command.Equals("n"))
+            {
+                if (x < 1)
+                {
+                    x = x + 1;
+                }
+               beenVisited = true;
+                countMistakes = countMistakes + 1;
+            }
+            else if (command.Equals("s"))
+            {
+                if (x > -1)
+                {
+                    x = x - 1;
+                }
+                beenVisited = true;
+                countMistakes = countMistakes + 1;
+            }
+            else if (command.Equals("w"))
+            {
+                {
+                    if (y < 1)
+                    {
+                        y = y + 1;
+                    }
+                    beenVisited = true;
+                    countMistakes = countMistakes + 1;
+                }
+            }
+            else if (command.Equals("e"))
+            {
+                {
+                    if (y > -1)
+                    {
+                        y = y - 1;
+                    }
+                    beenVisited = true;
+                    countMistakes = countMistakes + 1;
+                }
+            }
+            else if (command.Equals("ne"))
+            {
+                {
+                    if (y > -1 & x < 1)
+                    {
+                        y = y - 1;
+                        x = x + 1;
+                    }
+                    beenVisited = true;
+                    countMistakes = countMistakes + 1;
+                }
+            }
+            else if (command.Equals("nw"))
+            {
+                {
+                    if (y < 1 & x < 1)
+                    {
+                        y = y + 1;
+                        x = x + 1;
+                    }
+                    beenVisited = true;
+                    countMistakes = countMistakes + 1;
+                }
+            }
+            else if (command.Equals("se"))
+            {
+                {
+                    if (y > -1 & x > -1)
+                    {
+                        y = y - 1;
+                        x = x - 1;
+                    }
+                    beenVisited = true;
+                    countMistakes = countMistakes + 1;
+                }
+            }
+            else if (command.Equals("sw"))
+            {
+                {
+                    if (y < 1 & x > -1)
+                    {
+                        y = y + 1;
+                        x = x - 1;
+                    }
+                    beenVisited = true;
+                    countMistakes = countMistakes + 1;
+                }
+            }
+            else if (command.Equals("pick up chicken"))
+            {
+                outputBox.Text = "You pick up the chicken";
+                countMistakes = countMistakes + 1;
+                chicken = true;
+            }
+            else
+            {
+                outputBox.Text = "Invalid Action";
+                countMistakes = countMistakes+ 1;
+            }
+            if (chicken = true & command.Equals("victory"))
+            {
+                outputBox.Text = "You win";
+            }
+
+            if (x == 0 & y == 0)
+            {
+                outputBox.Text = r1.getName() + Environment.NewLine + r1.getDescription();
+            }
+            if (x == 1 & y == 0)
+            {
+                outputBox.Text = r2.getName() + Environment.NewLine + r2.getDescription();
+            }
+            if (x == 0 & y == 1)
+            {
+                outputBox.Text = r3.getName() + Environment.NewLine + r3.getDescription();
+            }
+            if (x == 1 & y == 1)
+            {
+                outputBox.Text = r4.getName() + Environment.NewLine + r4.getDescription();
+            }
+            }
             }
             else
             {
