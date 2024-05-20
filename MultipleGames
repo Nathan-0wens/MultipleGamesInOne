@@ -458,18 +458,13 @@ namespace Games_CSharp
         Room r2 = new Room("Elm Stree", "Its Scary");
         Room r3 = new Room("House", "It is tiny and white");
         Room r4 = new Room("School", "There are a lot of textbooks and a window");
-        public void introText()
-        {
             Console.WriteLine(startingPoint.getName() + Environment.NewLine + startingPoint.getDescription());
-        }
-        public void enterCommand(String command)
-        {
-            if (command.Equals("look"))
+            if (Console.ReadLine() == "look")
             {
                 Console.WriteLine("You see some stars");
                 countMistakes = countMistakes + 1;
             }
-            else if (command.Equals("n"))
+            else if (Console.ReadLine() == "n")
             {
                 if (x < 1)
                 {
@@ -478,7 +473,7 @@ namespace Games_CSharp
                 beenVisited = true;
                 countMistakes = countMistakes + 1;
             }
-            else if (command.Equals("s"))
+            else if (Console.ReadLine() == "s")
             {
                 if (x > -1)
                 {
@@ -487,7 +482,7 @@ namespace Games_CSharp
                 beenVisited = true;
                 countMistakes = countMistakes + 1;
             }
-            else if (command.Equals("w"))
+            else if (Console.ReadLine() == "w")
             {
                 {
                     if (y < 1)
@@ -498,7 +493,7 @@ namespace Games_CSharp
                     countMistakes = countMistakes + 1;
                 }
             }
-            else if (command.Equals("e"))
+            else if (Console.ReadLine() == "e")
             {
                 {
                     if (y > -1)
@@ -509,7 +504,7 @@ namespace Games_CSharp
                     countMistakes = countMistakes + 1;
                 }
             }
-            else if (command.Equals("ne"))
+            else if (Console.ReadLine() == "ne")
             {
                 {
                     if (y > -1 & x < 1)
@@ -521,7 +516,7 @@ namespace Games_CSharp
                     countMistakes = countMistakes + 1;
                 }
             }
-            else if (command.Equals("nw"))
+            else if (Console.ReadLine() == "nw")
             {
                 if (y < 1 & x < 1)
                 {
@@ -531,7 +526,7 @@ namespace Games_CSharp
                 beenVisited = true;
                 countMistakes = countMistakes + 1;
             }
-            else if (command.Equals("se"))
+            else if (Console.ReadLine() == "se")
             {
                 if (y > -1 & x > -1)
                 {
@@ -541,7 +536,7 @@ namespace Games_CSharp
                 beenVisited = true;
                 countMistakes = countMistakes + 1;
             }
-            else if (command.Equals("sw"))
+            else if (Console.ReadLine() == "sw")
             {
                 if (y < 1 & x > -1)
                 {
@@ -551,7 +546,7 @@ namespace Games_CSharp
                 beenVisited = true;
                 countMistakes = countMistakes + 1;
             }
-            else if (command.Equals("pick up chicken"))
+            else if (Console.ReadLine() == "pick up chicken")
             {
                 Console.WriteLine("You pick up the chicken");
                 countMistakes = countMistakes + 1;
@@ -562,7 +557,7 @@ namespace Games_CSharp
                 Console.WriteLine("Invalid Action");
                 countMistakes = countMistakes + 1;
             }
-            if (chicken = true & command.Equals("victory"))
+            if (chicken = true & Console.ReadLine() == "victory")
             {
                 Console.WriteLine("You win");
             }
@@ -583,7 +578,6 @@ namespace Games_CSharp
             {
                 Console.WriteLine(r4.getName() + Environment.NewLine + r4.getDescription());
             }
-        }
     }
             else
             {
