@@ -11,7 +11,7 @@ namespace Games_CSharp
         public static void Main(string[] Games)
         {
             string gamenumber = "";
-            Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim or Multiple Pile Nim, please type in the full name correctly.");
+            Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Kroz, please type in the full name correctly.");
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             gamenumber = Console.ReadLine();
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
@@ -459,35 +459,35 @@ namespace Games_CSharp
                 if (Console.ReadLine() == "look")
                 {
                     Console.WriteLine("You see some stars");
-                    countMistakes = countMistakes + 1;
+                    countMistakes++;
                 }
                 else if (Console.ReadLine() == "n")
                 {
                     if (x < 1)
                     {
-                        x = x + 1;
+                        x++;
                     }
                     beenVisited = true;
-                    countMistakes = countMistakes + 1;
+                    countMistakes++;
                 }
                 else if (Console.ReadLine() == "s")
                 {
                     if (x > -1)
                     {
-                        x = x - 1;
+                        x--;
                     }
                     beenVisited = true;
-                    countMistakes = countMistakes + 1;
+                    countMistakes++;
                 }
                 else if (Console.ReadLine() == "w")
                 {
                     {
                         if (y < 1)
                         {
-                            y = y + 1;
+                            y++;
                         }
                         beenVisited = true;
-                        countMistakes = countMistakes + 1;
+                        countMistakes++;
                     }
                 }
                 else if (Console.ReadLine() == "e")
@@ -495,10 +495,10 @@ namespace Games_CSharp
                     {
                         if (y > -1)
                         {
-                            y = y - 1;
+                            y--;
                         }
                         beenVisited = true;
-                        countMistakes = countMistakes + 1;
+                        countMistakes++;
                     }
                 }
                 else if (Console.ReadLine() == "ne")
@@ -506,53 +506,53 @@ namespace Games_CSharp
                     {
                         if (y > -1 & x < 1)
                         {
-                            y = y - 1;
-                            x = x + 1;
+                            y--;
+                            x++;
                         }
                         beenVisited = true;
-                        countMistakes = countMistakes + 1;
+                        countMistakes++;
                     }
                 }
                 else if (Console.ReadLine() == "nw")
                 {
                     if (y < 1 & x < 1)
                     {
-                        y = y + 1;
-                        x = x + 1;
+                        y++;
+                        x++;
                     }
                     beenVisited = true;
-                    countMistakes = countMistakes + 1;
+                    countMistakes++;
                 }
                 else if (Console.ReadLine() == "se")
                 {
                     if (y > -1 & x > -1)
                     {
-                        y = y - 1;
-                        x = x - 1;
+                        y--;
+                        x--;
                     }
                     beenVisited = true;
-                    countMistakes = countMistakes + 1;
+                    countMistakes++;
                 }
                 else if (Console.ReadLine() == "sw")
                 {
                     if (y < 1 & x > -1)
                     {
-                        y = y + 1;
-                        x = x - 1;
+                        y++;
+                        x--;
                     }
                     beenVisited = true;
-                    countMistakes = countMistakes + 1;
+                    countMistakes++;
                 }
                 else if (Console.ReadLine() == "pick up chicken")
                 {
                     Console.WriteLine("You pick up the chicken");
-                    countMistakes = countMistakes + 1;
+                    countMistakes++;
                     chicken = true;
                 }
                 else
                 {
                     Console.WriteLine("Invalid Action");
-                    countMistakes = countMistakes + 1;
+                    countMistakes++;
                 }
                 if (chicken = true & Console.ReadLine() == "victory")
                 {
