@@ -1,4 +1,4 @@
-//Date in day/month/year format for newest update: 16/5/2024
+//Date in day/month/year format for newest update: 21/5/2024
 //I suggest you copy the Single Pile Nim or the Multiple Pile Nim from the text the console wrote at the start that way you won't mistype it.
 using MultipleGames;
 using System;
@@ -445,7 +445,7 @@ namespace Games_CSharp
             }
             else if (gamenumber == "Kroz")
             {
-                bool beenVisited = false;
+                Console.WriteLine("Find the hidden item and say (victory) to win, but if you don't have it you DIE.");
                 bool chicken = false;
                 int countMistakes = 0;
                 int x = 0;
@@ -467,7 +467,6 @@ namespace Games_CSharp
                     {
                         x++;
                     }
-                    beenVisited = true;
                     countMistakes++;
                 }
                 else if (Console.ReadLine() == "s")
@@ -476,7 +475,7 @@ namespace Games_CSharp
                     {
                         x--;
                     }
-                    beenVisited = true;
+                    //
                     countMistakes++;
                 }
                 else if (Console.ReadLine() == "w")
@@ -486,7 +485,6 @@ namespace Games_CSharp
                         {
                             y++;
                         }
-                        beenVisited = true;
                         countMistakes++;
                     }
                 }
@@ -497,7 +495,6 @@ namespace Games_CSharp
                         {
                             y--;
                         }
-                        beenVisited = true;
                         countMistakes++;
                     }
                 }
@@ -509,7 +506,6 @@ namespace Games_CSharp
                             y--;
                             x++;
                         }
-                        beenVisited = true;
                         countMistakes++;
                     }
                 }
@@ -520,7 +516,6 @@ namespace Games_CSharp
                         y++;
                         x++;
                     }
-                    beenVisited = true;
                     countMistakes++;
                 }
                 else if (Console.ReadLine() == "se")
@@ -530,7 +525,6 @@ namespace Games_CSharp
                         y--;
                         x--;
                     }
-                    beenVisited = true;
                     countMistakes++;
                 }
                 else if (Console.ReadLine() == "sw")
@@ -540,7 +534,7 @@ namespace Games_CSharp
                         y++;
                         x--;
                     }
-                    beenVisited = true;
+
                     countMistakes++;
                 }
                 else if (Console.ReadLine() == "pick up chicken")
@@ -557,6 +551,10 @@ namespace Games_CSharp
                 if (chicken = true & Console.ReadLine() == "victory")
                 {
                     Console.WriteLine("You win");
+                }
+                else if (chicken = false & Console.ReadLine() == "victory")
+                {
+                    Console.WriteLine("YOU LOOSE, try to find the hidden item to win.");
                 }
 
                 if (x == 0 & y == 0)
