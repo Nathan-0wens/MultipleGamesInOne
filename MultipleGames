@@ -19,56 +19,69 @@ namespace Games_CSharp
             Console.WriteLine("Type QUIT to quit any game at any time.");
             while (true)
             {
-                string gamenumber = "";
-                Console.WriteLine("Type in Score to see your score at any point.");
-                Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Kroz, please type in the full name correctly.");
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-                gamenumber = Console.ReadLine();
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-                if (gamenumber == "Single Pile Nim")
+                if (Console.ReadLine() != "QUIT")
                 {
-                    //Piles and taking from them
-                    Random ran = new();
-                    int currentNum = ran.Next(10, 100);
-                    int takeAmount = 0;
-                    int maxTake;
-
-                    //Winning and game ending
-                    int whoseTurn = 1;
-                    bool gameIsOver;
-                    bool gameLoop = true;
-                    bool validInput;
-
-
-                    // Main Game Loop
-                    if (gameLoop == true)
+                    string gamenumber = "";
+                    Console.WriteLine("Type in Score to see your score at any point.");
+                    Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Kroz, please type in the full name correctly.");
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+                    gamenumber = Console.ReadLine();
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                    if (gamenumber == "Single Pile Nim")
                     {
-                        // Setup
-                        maxTake = Math.Min(3, currentNum);
-                        gameIsOver = false;
+                        //Piles and taking from them
+                        Random ran = new();
+                        int currentNum = ran.Next(10, 100);
+                        int takeAmount = 0;
+                        int maxTake;
 
-                        Console.WriteLine("Single Pile NIM\n---------------\n");
+                        //Winning and game ending
+                        int whoseTurn = 1;
+                        bool gameIsOver;
+                        bool gameLoop = true;
+                        bool validInput;
 
-                        //Session Loop
-                        while (!gameIsOver)
+
+                        // Main Game Loop
+                        if (gameLoop == true)
                         {
-                            // Player's Turn
-                            validInput = false;
-                            whoseTurn = 1;
+                            // Setup
+                            maxTake = Math.Min(3, currentNum);
+                            gameIsOver = false;
 
-                            if (!validInput)
+                            Console.WriteLine("Single Pile NIM\n---------------\n");
+
+                            //Session Loop
+                            while (!gameIsOver)
                             {
-                                //Get an integer
-                                while (true)
+                                // Player's Turn
+                                validInput = false;
+                                whoseTurn = 1;
+
+                                if (!validInput)
                                 {
-                                    Console.WriteLine("Remaining total is: {0}", currentNum);
-                                    Console.WriteLine("How much will you take (1-{0})?", maxTake);
-
-                                    bool success = int.TryParse(Console.ReadLine(), out takeAmount);
-
-                                    if (success)
+                                    //Get an integer
+                                    while (true)
                                     {
-                                        break;
+                                        Console.WriteLine("Remaining total is: {0}", currentNum);
+                                        Console.WriteLine("How much will you take (1-{0})?", maxTake);
+
+                                        bool success = int.TryParse(Console.ReadLine(), out takeAmount);
+
+                                        if (success)
+                                        {
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Invalid amount!\n");
+                                        }
+                                    }
+
+                                    // Check to see if input is within the valid range
+                                    if (takeAmount > 0 && takeAmount <= maxTake)
+                                    {
+                                        validInput = true;
                                     }
                                     else
                                     {
@@ -76,661 +89,655 @@ namespace Games_CSharp
                                     }
                                 }
 
-                                // Check to see if input is within the valid range
-                                if (takeAmount > 0 && takeAmount <= maxTake)
-                                {
-                                    validInput = true;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Invalid amount!\n");
-                                }
-                            }
-
-                            Console.WriteLine("You took {0}.\n", takeAmount);
-                            currentNum -= takeAmount;
-
-                            if (currentNum <= 0)
-                            {
-                                gameIsOver = true;
-                            }
-                            else
-                            {
-                                //Computer's turn
-                                whoseTurn = 2;
-                                if (currentNum > 1)
-                                {
-                                    int pizza = currentNum + 3;
-                                    if (pizza % 4 == 0)
-                                    {
-                                        takeAmount = ran.Next(1, 3);
-                                    }
-                                    else
-                                    {
-                                        takeAmount = Math.Min(pizza % 4, currentNum - 1);
-                                        Console.WriteLine("I will take {0}.\n", takeAmount);
-                                    }
-                                }
-                                else
-                                {
-                                    takeAmount = 1;
-                                    Console.WriteLine("I will take {0}.\n", takeAmount);
-                                }
+                                Console.WriteLine("You took {0}.\n", takeAmount);
                                 currentNum -= takeAmount;
 
                                 if (currentNum <= 0)
                                 {
                                     gameIsOver = true;
                                 }
-                            }
-                        }
-
-                        // Determine the winner
-                        if (whoseTurn == 1)
-                        {
-                            Console.WriteLine("I win, You lose.");
-                            L++;
-                        }
-
-                        else
-                        {
-                            Console.WriteLine("You win, I lose.");
-                            W++;
-                        }
-
-                    }
-                    if (Console.ReadLine() == "QUIT")
-                    {
-                        Console.WriteLine("Pick another game: Single Pile Nim, Multuple Pile Nim, or Kroz. Or type Score to see your win/loss ratio.");
-                    }
-                }
-                // Multiple Pile Nim Code
-                else if (gamenumber == "Multiple Pile Nim")
-                {
-                    Console.WriteLine("Multiple Pile Nim \n ----------------- \n");
-                    //Creating the amount of tokens
-                    Random ran = new();
-                    int pilenumber = 0;
-                    int currentNum1 = ran.Next(10, 20);
-                    int currentNum2 = ran.Next(10, 20);
-                    int currentNum3 = ran.Next(10, 20);
-
-                    //The piles
-                    int pile1 = currentNum1;
-                    int pile2 = currentNum2;
-                    int pile3 = currentNum3;
-
-                    //Helps ai to play better and simplifies code a lot
-                    int pile12 = currentNum1 + currentNum2;
-
-                    //Int variables
-                    int takeAmount1 = 0;
-                    int takeAmount2 = 0;
-                    int takeAmount3 = 0;
-                    int maxTake1;
-                    int maxTake2;
-                    int maxTake3;
-                    int whoseTurn = 1;
-
-                    //Bools for ending the game
-                    bool gameIsOver;
-                    bool gameLoop = true;
-                    bool validInput;
-
-
-                    // Main Game Loop for multiple pile nim
-                    if (gameLoop == true)
-                    {
-                        // Setup
-                        gameIsOver = false;
-
-                        Console.WriteLine("Multiple Pile Nim");
-
-                        //Session Loop
-                        while (!gameIsOver)
-                        {
-                            maxTake1 = Math.Min(5, currentNum1);
-                            maxTake2 = Math.Min(5, currentNum2);
-                            maxTake3 = Math.Min(5, currentNum3);
-                            // Player's Turn
-                            validInput = false;
-                            whoseTurn = 1;
-                            if (!validInput)
-                            {
-                                //Get an integer
-                                while (true)
-                                {
-                                    Console.WriteLine("Remaining total from the first pile is: {0}", currentNum1);
-                                    Console.WriteLine("Remaining total from the second pile is: {0}", currentNum2);
-                                    Console.WriteLine("Remaining total from the third pile is: {0}", currentNum3);
-                                    Console.WriteLine("Which pile do you want to take from? 1-3");
-                                    int.TryParse(Console.ReadLine(), out pilenumber);
-
-                                    if (pilenumber == 1)
-                                    {
-                                        Console.WriteLine("You are taking from pile one. How many tokens do you take (1 - {0})?", maxTake1);
-                                        bool success1 = int.TryParse(Console.ReadLine(), out takeAmount1);
-                                        if (success1)
-                                        {
-                                            if (takeAmount1 > 5 || takeAmount1 < 0)
-                                            {
-                                                takeAmount1 %= 6;
-                                                if (takeAmount1 == 0)
-                                                {
-                                                    takeAmount1 = 5;
-                                                }
-                                            }
-                                            takeAmount2 = 0;
-                                            takeAmount3 = 0;
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("Invalid amount!");
-                                        }
-                                        if (takeAmount1 > 0 && takeAmount1 <= maxTake1)
-                                        {
-                                            validInput = true;
-                                        }
-
-                                        else
-                                        {
-                                            Console.WriteLine("Invalid amount!\n");
-                                            validInput = false;
-                                        }
-                                    }
-                                    else if (pilenumber == 2)
-                                    {
-                                        Console.WriteLine("You are taking from pile two. How many tokens do you take (1 - {0})?", maxTake2);
-                                        bool success2 = int.TryParse(Console.ReadLine(), out takeAmount2);
-                                        if (success2)
-                                        {
-                                            takeAmount1 = 0;
-                                            if (takeAmount2 > 5 || takeAmount2 < 0)
-                                            {
-                                                takeAmount2 %= 6;
-                                                if (takeAmount2 == 0)
-                                                {
-                                                    takeAmount2 = 5;
-                                                }
-                                            }
-                                            takeAmount3 = 0;
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("Invalid amount!");
-                                        }
-                                        if (takeAmount2 > 0 && takeAmount2 <= maxTake2)
-                                        {
-                                            validInput = true;
-                                        }
-
-                                        else
-                                        {
-                                            Console.WriteLine("Invalid amount!\n");
-                                            validInput = false;
-                                        }
-                                    }
-                                    else if (pilenumber == 3)
-                                    {
-                                        Console.WriteLine("You are taking from pile three. How many tokens do you take (1 - {0})?", maxTake3);
-                                        bool success3 = int.TryParse(Console.ReadLine(), out takeAmount3);
-                                        if (success3)
-                                        {
-                                            takeAmount1 = 0;
-                                            takeAmount2 = 0;
-                                            if (takeAmount3 > 5 || takeAmount3 < 0)
-                                            {
-                                                takeAmount3 %= 6;
-                                                if (takeAmount3 == 0)
-                                                {
-                                                    takeAmount3 = 5;
-                                                }
-                                            }
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("Invalid amount!");
-                                        }
-                                        if (takeAmount3 > 0 && takeAmount3 <= maxTake3)
-                                        {
-                                            validInput = true;
-                                        }
-
-                                        else
-                                        {
-                                            Console.WriteLine("Invalid amount!\n");
-                                            validInput = false;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("invalid pile");
-                                    }
-                                }
-                            }
-                            Console.WriteLine("You took from pile 1: {0}.\n", takeAmount1);
-                            Console.WriteLine("You took from pile 2: {0}.\n", takeAmount2);
-                            Console.WriteLine("You took from pile 3: {0}.\n", takeAmount3);
-                            currentNum1 -= takeAmount1;
-                            currentNum2 -= takeAmount2;
-                            currentNum3 -= takeAmount3;
-                            if (currentNum1 <= 0 && currentNum2 <= 0 && currentNum3 <= 0)
-                            {
-                                gameIsOver = true;
-                            }
-                            else
-                            {
-                                //Computer's turn
-                                whoseTurn = 2;
-                                if (pile12 > currentNum3)
-                                {
-                                    if (currentNum1 > currentNum2)
-                                    {
-                                        takeAmount1 = Math.Max(1, currentNum1 + currentNum2 - currentNum3) % 6;
-                                        if (takeAmount1 == 0)
-                                        {
-                                            takeAmount1 = 5;
-                                        }
-                                        takeAmount2 = 0;
-                                        takeAmount3 = 0;
-                                        Console.WriteLine("I will take from the first pile: {0}.\n", takeAmount1);
-                                    }
-                                    else if (currentNum2 > currentNum1)
-                                    {
-                                        takeAmount1 = 0;
-                                        takeAmount2 = Math.Max(1, currentNum1 + currentNum2 - currentNum3) % 6;
-                                        if (takeAmount2 == 0)
-                                        {
-                                            takeAmount2 = 0;
-                                        }
-                                        takeAmount3 = 0;
-                                        Console.WriteLine("I will take from the second pile: {0}.\n", takeAmount2);
-                                    }
-                                    else
-                                    {
-                                        takeAmount1 = 1;
-                                        takeAmount2 = 0;
-                                        takeAmount3 = 0;
-                                        Console.WriteLine("I will take from the first pile: {0}.\n", takeAmount1);
-                                    }
-
-                                }
-                                else if (pile12 < currentNum3)
-                                {
-
-                                    if (currentNum3 > currentNum2)
-                                    {
-                                        takeAmount1 = 0;
-                                        takeAmount2 = 0;
-                                        takeAmount3 = Math.Max(1, currentNum3 - currentNum2 - currentNum1) % 6;
-                                        if (takeAmount3 == 0)
-                                        {
-                                            takeAmount3 = 5;
-                                        }
-                                        Console.WriteLine("I will take from the third pile: {0}.\n", takeAmount3);
-                                    }
-                                    else
-                                    {
-
-                                    }
-                                }
                                 else
                                 {
-                                    if (currentNum1 != 0 && currentNum1 >= currentNum2 && currentNum1 >= currentNum3)
+                                    //Computer's turn
+                                    whoseTurn = 2;
+                                    if (currentNum > 1)
                                     {
-                                        takeAmount1 = 1;
-                                        takeAmount2 = 0;
-                                        takeAmount3 = 0;
-                                        Console.WriteLine("I will take from the first pile: {0}.\n", takeAmount1);
-                                    }
-                                    else if (currentNum2 != 0 && currentNum2 >= currentNum1 && currentNum2 >= currentNum3)
-                                    {
-                                        takeAmount1 = 0;
-                                        takeAmount2 = 0;
-                                        takeAmount3 = 1;
-                                        Console.WriteLine("I will take from the second pile: {0}.\n", takeAmount2);
+                                        int pizza = currentNum + 3;
+                                        if (pizza % 4 == 0)
+                                        {
+                                            takeAmount = ran.Next(1, 3);
+                                        }
+                                        else
+                                        {
+                                            takeAmount = Math.Min(pizza % 4, currentNum - 1);
+                                            Console.WriteLine("I will take {0}.\n", takeAmount);
+                                        }
                                     }
                                     else
                                     {
-                                        takeAmount1 = 0;
-                                        takeAmount2 = 1;
-                                        takeAmount3 = 0;
-                                        Console.WriteLine("I will take {0}.\n", takeAmount2);
+                                        takeAmount = 1;
+                                        Console.WriteLine("I will take {0}.\n", takeAmount);
+                                    }
+                                    currentNum -= takeAmount;
+
+                                    if (currentNum <= 0)
+                                    {
+                                        gameIsOver = true;
                                     }
                                 }
+                            }
+
+                            // Determine the winner
+                            if (whoseTurn == 1)
+                            {
+                                Console.WriteLine("I win, You lose.");
+                                L++;
+                            }
+
+                            else
+                            {
+                                Console.WriteLine("You win, I lose.");
+                                W++;
+                            }
+
+                        }
+                        if (Console.ReadLine() == "QUIT")
+                        {
+                            Console.WriteLine("Pick another game: Single Pile Nim, Multuple Pile Nim, or Kroz. Or type Score to see your win/loss ratio.");
+                        }
+                    }
+                    // Multiple Pile Nim Code
+                    else if (gamenumber == "Multiple Pile Nim")
+                    {
+                        Console.WriteLine("Multiple Pile Nim \n ----------------- \n");
+                        //Creating the amount of tokens
+                        Random ran = new();
+                        int pilenumber = 0;
+                        int currentNum1 = ran.Next(10, 20);
+                        int currentNum2 = ran.Next(10, 20);
+                        int currentNum3 = ran.Next(10, 20);
+
+                        //The piles
+                        int pile1 = currentNum1;
+                        int pile2 = currentNum2;
+                        int pile3 = currentNum3;
+
+                        //Helps ai to play better and simplifies code a lot
+                        int pile12 = currentNum1 + currentNum2;
+
+                        //Int variables
+                        int takeAmount1 = 0;
+                        int takeAmount2 = 0;
+                        int takeAmount3 = 0;
+                        int maxTake1;
+                        int maxTake2;
+                        int maxTake3;
+                        int whoseTurn = 1;
+
+                        //Bools for ending the game
+                        bool gameIsOver;
+                        bool gameLoop = true;
+                        bool validInput;
+
+
+                        // Main Game Loop for multiple pile nim
+                        if (gameLoop == true)
+                        {
+                            // Setup
+                            gameIsOver = false;
+
+                            Console.WriteLine("Multiple Pile Nim");
+
+                            //Session Loop
+                            while (!gameIsOver)
+                            {
+                                maxTake1 = Math.Min(5, currentNum1);
+                                maxTake2 = Math.Min(5, currentNum2);
+                                maxTake3 = Math.Min(5, currentNum3);
+                                // Player's Turn
+                                validInput = false;
+                                whoseTurn = 1;
+                                if (!validInput)
+                                {
+                                    //Get an integer
+                                    while (true)
+                                    {
+                                        Console.WriteLine("Remaining total from the first pile is: {0}", currentNum1);
+                                        Console.WriteLine("Remaining total from the second pile is: {0}", currentNum2);
+                                        Console.WriteLine("Remaining total from the third pile is: {0}", currentNum3);
+                                        Console.WriteLine("Which pile do you want to take from? 1-3");
+                                        int.TryParse(Console.ReadLine(), out pilenumber);
+
+                                        if (pilenumber == 1)
+                                        {
+                                            Console.WriteLine("You are taking from pile one. How many tokens do you take (1 - {0})?", maxTake1);
+                                            bool success1 = int.TryParse(Console.ReadLine(), out takeAmount1);
+                                            if (success1)
+                                            {
+                                                if (takeAmount1 > 5 || takeAmount1 < 0)
+                                                {
+                                                    takeAmount1 %= 6;
+                                                    if (takeAmount1 == 0)
+                                                    {
+                                                        takeAmount1 = 5;
+                                                    }
+                                                }
+                                                takeAmount2 = 0;
+                                                takeAmount3 = 0;
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Invalid amount!");
+                                            }
+                                            if (takeAmount1 > 0 && takeAmount1 <= maxTake1)
+                                            {
+                                                validInput = true;
+                                            }
+
+                                            else
+                                            {
+                                                Console.WriteLine("Invalid amount!\n");
+                                                validInput = false;
+                                            }
+                                        }
+                                        else if (pilenumber == 2)
+                                        {
+                                            Console.WriteLine("You are taking from pile two. How many tokens do you take (1 - {0})?", maxTake2);
+                                            bool success2 = int.TryParse(Console.ReadLine(), out takeAmount2);
+                                            if (success2)
+                                            {
+                                                takeAmount1 = 0;
+                                                if (takeAmount2 > 5 || takeAmount2 < 0)
+                                                {
+                                                    takeAmount2 %= 6;
+                                                    if (takeAmount2 == 0)
+                                                    {
+                                                        takeAmount2 = 5;
+                                                    }
+                                                }
+                                                takeAmount3 = 0;
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Invalid amount!");
+                                            }
+                                            if (takeAmount2 > 0 && takeAmount2 <= maxTake2)
+                                            {
+                                                validInput = true;
+                                            }
+
+                                            else
+                                            {
+                                                Console.WriteLine("Invalid amount!\n");
+                                                validInput = false;
+                                            }
+                                        }
+                                        else if (pilenumber == 3)
+                                        {
+                                            Console.WriteLine("You are taking from pile three. How many tokens do you take (1 - {0})?", maxTake3);
+                                            bool success3 = int.TryParse(Console.ReadLine(), out takeAmount3);
+                                            if (success3)
+                                            {
+                                                takeAmount1 = 0;
+                                                takeAmount2 = 0;
+                                                if (takeAmount3 > 5 || takeAmount3 < 0)
+                                                {
+                                                    takeAmount3 %= 6;
+                                                    if (takeAmount3 == 0)
+                                                    {
+                                                        takeAmount3 = 5;
+                                                    }
+                                                }
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Invalid amount!");
+                                            }
+                                            if (takeAmount3 > 0 && takeAmount3 <= maxTake3)
+                                            {
+                                                validInput = true;
+                                            }
+
+                                            else
+                                            {
+                                                Console.WriteLine("Invalid amount!\n");
+                                                validInput = false;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("invalid pile");
+                                        }
+                                    }
+                                }
+                                Console.WriteLine("You took from pile 1: {0}.\n", takeAmount1);
+                                Console.WriteLine("You took from pile 2: {0}.\n", takeAmount2);
+                                Console.WriteLine("You took from pile 3: {0}.\n", takeAmount3);
                                 currentNum1 -= takeAmount1;
                                 currentNum2 -= takeAmount2;
                                 currentNum3 -= takeAmount3;
-                                if (currentNum1 < 0)
-                                {
-                                    if (currentNum2 < currentNum3)
-                                    {
-                                        currentNum3 += currentNum1;
-                                        currentNum1 = 0;
-                                    }
-                                    else
-                                    {
-                                        currentNum2 += currentNum1;
-                                        currentNum1 = 0;
-                                    }
-                                }
-                                else if (currentNum2 < 0)
-                                {
-                                    if (currentNum1 < currentNum3)
-                                    {
-                                        currentNum3 += currentNum2;
-                                        currentNum2 = 0;
-                                    }
-                                    else
-                                    {
-                                        currentNum1 += currentNum2;
-                                        currentNum2 = 0;
-                                    }
-                                }
-                                else if (currentNum3 < 0)
-                                {
-                                    if (currentNum1 < currentNum2)
-                                    {
-                                        currentNum2 += currentNum3;
-                                        currentNum3 = 0;
-                                    }
-                                    else
-                                    {
-                                        currentNum1 += currentNum3;
-                                        currentNum3 = 0;
-                                    }
-                                }
-                                if (currentNum1 == 0 && currentNum2 == 0 && currentNum3 == 0)
+                                if (currentNum1 <= 0 && currentNum2 <= 0 && currentNum3 <= 0)
                                 {
                                     gameIsOver = true;
-                                    if (whoseTurn == 1)
+                                }
+                                else
+                                {
+                                    //Computer's turn
+                                    whoseTurn = 2;
+                                    if (pile12 > currentNum3)
                                     {
-                                        Console.WriteLine("I win, you loose.");
-                                        L++;
+                                        if (currentNum1 > currentNum2)
+                                        {
+                                            takeAmount1 = Math.Max(1, currentNum1 + currentNum2 - currentNum3) % 6;
+                                            if (takeAmount1 == 0)
+                                            {
+                                                takeAmount1 = 5;
+                                            }
+                                            takeAmount2 = 0;
+                                            takeAmount3 = 0;
+                                            Console.WriteLine("I will take from the first pile: {0}.\n", takeAmount1);
+                                        }
+                                        else if (currentNum2 > currentNum1)
+                                        {
+                                            takeAmount1 = 0;
+                                            takeAmount2 = Math.Max(1, currentNum1 + currentNum2 - currentNum3) % 6;
+                                            if (takeAmount2 == 0)
+                                            {
+                                                takeAmount2 = 0;
+                                            }
+                                            takeAmount3 = 0;
+                                            Console.WriteLine("I will take from the second pile: {0}.\n", takeAmount2);
+                                        }
+                                        else
+                                        {
+                                            takeAmount1 = 1;
+                                            takeAmount2 = 0;
+                                            takeAmount3 = 0;
+                                            Console.WriteLine("I will take from the first pile: {0}.\n", takeAmount1);
+                                        }
+
+                                    }
+                                    else if (pile12 < currentNum3)
+                                    {
+
+                                        if (currentNum3 > currentNum2)
+                                        {
+                                            takeAmount1 = 0;
+                                            takeAmount2 = 0;
+                                            takeAmount3 = Math.Max(1, currentNum3 - currentNum2 - currentNum1) % 6;
+                                            if (takeAmount3 == 0)
+                                            {
+                                                takeAmount3 = 5;
+                                            }
+                                            Console.WriteLine("I will take from the third pile: {0}.\n", takeAmount3);
+                                        }
+                                        else
+                                        {
+
+                                        }
                                     }
                                     else
                                     {
-                                        Console.WriteLine("I loose, you win.");
-                                        W++;
+                                        if (currentNum1 != 0 && currentNum1 >= currentNum2 && currentNum1 >= currentNum3)
+                                        {
+                                            takeAmount1 = 1;
+                                            takeAmount2 = 0;
+                                            takeAmount3 = 0;
+                                            Console.WriteLine("I will take from the first pile: {0}.\n", takeAmount1);
+                                        }
+                                        else if (currentNum2 != 0 && currentNum2 >= currentNum1 && currentNum2 >= currentNum3)
+                                        {
+                                            takeAmount1 = 0;
+                                            takeAmount2 = 0;
+                                            takeAmount3 = 1;
+                                            Console.WriteLine("I will take from the second pile: {0}.\n", takeAmount2);
+                                        }
+                                        else
+                                        {
+                                            takeAmount1 = 0;
+                                            takeAmount2 = 1;
+                                            takeAmount3 = 0;
+                                            Console.WriteLine("I will take {0}.\n", takeAmount2);
+                                        }
+                                    }
+                                    currentNum1 -= takeAmount1;
+                                    currentNum2 -= takeAmount2;
+                                    currentNum3 -= takeAmount3;
+                                    if (currentNum1 < 0)
+                                    {
+                                        if (currentNum2 < currentNum3)
+                                        {
+                                            currentNum3 += currentNum1;
+                                            currentNum1 = 0;
+                                        }
+                                        else
+                                        {
+                                            currentNum2 += currentNum1;
+                                            currentNum1 = 0;
+                                        }
+                                    }
+                                    else if (currentNum2 < 0)
+                                    {
+                                        if (currentNum1 < currentNum3)
+                                        {
+                                            currentNum3 += currentNum2;
+                                            currentNum2 = 0;
+                                        }
+                                        else
+                                        {
+                                            currentNum1 += currentNum2;
+                                            currentNum2 = 0;
+                                        }
+                                    }
+                                    else if (currentNum3 < 0)
+                                    {
+                                        if (currentNum1 < currentNum2)
+                                        {
+                                            currentNum2 += currentNum3;
+                                            currentNum3 = 0;
+                                        }
+                                        else
+                                        {
+                                            currentNum1 += currentNum3;
+                                            currentNum3 = 0;
+                                        }
+                                    }
+                                    if (currentNum1 == 0 && currentNum2 == 0 && currentNum3 == 0)
+                                    {
+                                        gameIsOver = true;
+                                        if (whoseTurn == 1)
+                                        {
+                                            Console.WriteLine("I win, you loose.");
+                                            L++;
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("I loose, you win.");
+                                            W++;
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
-                    if (Console.ReadLine() == "QUIT")
-                    {
-                        Console.WriteLine("Pick another game: Single Pile Nim, Multuple Pile Nim, or Kroz. Or type Score to see your win/loss ratio.");
-                    }
-                }
-                else if (gamenumber == "Kroz")
-                {
-                    int a = 0;
-                    while (a == 0)
-                    {
-                        Console.WriteLine("Find the hidden item and say (victory) to win, but if you don't have it you DIE. Type QUIT at any point to quit this game.");
-                        bool chicken = false;
-                        bool pizza = false;
-                        int pizzaeaten = 0;
-                        int countMistakes = 0;
-                        int x = 0;
-                        int y = 0;
-                        Room startingPoint = new("Entry Way", "You realize you are stuck in a game and need something and then to say victory to win. Looking around you see that you are in a lovely marble enterance to the Library");
-                        Room r1 = new("Field", "Lovely Place to Be");
-                        Room r2 = new("Elm Stree", "Its Scary");
-                        Room r3 = new("House", "It is tiny and white and there is an open window so you can enter the house");
-                        Room r4 = new("School", "There are a lot of textbooks and a window that you can't get through");
-                        Room r5 = new("Darkness???", "You could swear that it was still daytime, yet there is not a speck of light.");
-                        Room r6 = new("Chicken???", "In a massive open area you see a random chicken");
-                        Room r7 = new("Treehouse", "There is no way to enter it, but it looks neat.");
-                        Room r8 = new("Beach", "It is very sandy, and the water looks undrinkable");
-                        Room r9 = new("Restaurant", "No one is here, yet you can see tons of tasty free pizza. Though eating too much pizza could kill you, you are still very hungry.");
-                        Room r10 = new("Inside the house", "You can see nothing except for the window you entered through.");
-                        Room r11 = new("Another School???", "There is one window that you can't get through and tons of school supplies inside.");
-                        Room r12 = new("School", "There are a lot of textbooks and a window");
-                        Room r13 = new("School", "There are a lot of textbooks and a window");
-                        Room r14 = new("School", "There are a lot of textbooks and a window");
-                        Room r15 = new("School", "There are a lot of textbooks and a window");
-                        Room r16 = new("School", "There are a lot of textbooks and a window");
-                        Console.WriteLine(startingPoint.getName() + Environment.NewLine + startingPoint.getDescription());
                         if (Console.ReadLine() == "QUIT")
                         {
-                            a++;
+                            Console.WriteLine("Pick another game: Single Pile Nim, Multuple Pile Nim, or Kroz. Or type Score to see your win/loss ratio.");
                         }
-                        if (Console.ReadLine() == "look")
+                    }
+                    else if (gamenumber == "Kroz")
+                    {
+                        int a = 0;
+                        while (a == 0)
                         {
-                            Console.WriteLine("You see some stars");
-                            countMistakes++;
-                        }
-                        else if (Console.ReadLine() == "n")
-                        {
-                            if (x < 1)
+                            Console.WriteLine("Find the hidden item and say (victory) to win, but if you don't have it you DIE. Type QUIT at any point to quit this game.");
+                            bool chicken = false;
+                            bool pizza = false;
+                            int pizzaeaten = 0;
+                            int countMistakes = 0;
+                            int x = 0;
+                            int y = 0;
+                            Room startingPoint = new("Entry Way", "You realize you are stuck in a game and need something and then to say victory to win. Looking around you see that you are in a lovely marble enterance to the Library");
+                            Room r1 = new("Field", "Lovely Place to Be");
+                            Room r2 = new("Elm Stree", "Its Scary");
+                            Room r3 = new("House", "It is tiny and white and there is an open window so you can enter the house");
+                            Room r4 = new("School", "There are a lot of textbooks and a window that you can't get through");
+                            Room r5 = new("Darkness???", "You could swear that it was still daytime, yet there is not a speck of light.");
+                            Room r6 = new("Chicken???", "In a massive open area you see a random chicken");
+                            Room r7 = new("Treehouse", "There is no way to enter it, but it looks neat.");
+                            Room r8 = new("Beach", "It is very sandy, and the water looks undrinkable");
+                            Room r9 = new("Restaurant", "No one is here, yet you can see tons of tasty free pizza. Though eating too much pizza could kill you, you are still very hungry.");
+                            Room r10 = new("Inside the house", "You can see nothing except for the window you entered through.");
+                            Room r11 = new("Another School???", "There is one window that you can't get through and tons of school supplies inside.");
+                            Room r12 = new("School", "There are a lot of textbooks and a window");
+                            Room r13 = new("School", "There are a lot of textbooks and a window");
+                            Room r14 = new("School", "There are a lot of textbooks and a window");
+                            Room r15 = new("School", "There are a lot of textbooks and a window");
+                            Room r16 = new("School", "There are a lot of textbooks and a window");
+                            Console.WriteLine(startingPoint.getName() + Environment.NewLine + startingPoint.getDescription());
+                            if (Console.ReadLine() == "QUIT")
                             {
-                                x++;
+                                a++;
                             }
-                            countMistakes++;
-                        }
-                        else if (Console.ReadLine() == "s")
-                        {
-                            if (x > -1)
+                            if (Console.ReadLine() == "look")
                             {
-                                x--;
-                            }
-                            //
-                            countMistakes++;
-                        }
-                        else if (Console.ReadLine() == "w")
-                        {
-                            {
-                                if (y < 1)
-                                {
-                                    y++;
-                                }
+                                Console.WriteLine("You see some stars");
                                 countMistakes++;
                             }
-                        }
-                        else if (Console.ReadLine() == "e")
-                        {
+                            else if (Console.ReadLine() == "n")
                             {
-                                if (y > -1)
+                                if (x < 1)
                                 {
-                                    y--;
-                                }
-                                countMistakes++;
-                            }
-                        }
-                        else if (Console.ReadLine() == "ne")
-                        {
-                            {
-                                if (y > -1 & x < 1)
-                                {
-                                    y--;
                                     x++;
                                 }
                                 countMistakes++;
                             }
-                        }
-                        else if (Console.ReadLine() == "nw")
-                        {
-                            if (y < 1 & x < 1)
+                            else if (Console.ReadLine() == "s")
                             {
-                                y++;
-                                x++;
+                                if (x > -1)
+                                {
+                                    x--;
+                                }
+                                //
+                                countMistakes++;
                             }
-                            countMistakes++;
-                        }
-                        else if (Console.ReadLine() == "se")
-                        {
-                            if (y > -1 & x > -1)
+                            else if (Console.ReadLine() == "w")
                             {
-                                y--;
-                                x--;
+                                {
+                                    if (y < 1)
+                                    {
+                                        y++;
+                                    }
+                                    countMistakes++;
+                                }
                             }
-                            countMistakes++;
-                        }
-                        else if (Console.ReadLine() == "sw")
-                        {
-                            if (y < 1 & x > -1)
+                            else if (Console.ReadLine() == "e")
                             {
-                                y++;
-                                x--;
+                                {
+                                    if (y > -1)
+                                    {
+                                        y--;
+                                    }
+                                    countMistakes++;
+                                }
                             }
+                            else if (Console.ReadLine() == "ne")
+                            {
+                                {
+                                    if (y > -1 & x < 1)
+                                    {
+                                        y--;
+                                        x++;
+                                    }
+                                    countMistakes++;
+                                }
+                            }
+                            else if (Console.ReadLine() == "nw")
+                            {
+                                if (y < 1 & x < 1)
+                                {
+                                    y++;
+                                    x++;
+                                }
+                                countMistakes++;
+                            }
+                            else if (Console.ReadLine() == "se")
+                            {
+                                if (y > -1 & x > -1)
+                                {
+                                    y--;
+                                    x--;
+                                }
+                                countMistakes++;
+                            }
+                            else if (Console.ReadLine() == "sw")
+                            {
+                                if (y < 1 & x > -1)
+                                {
+                                    y++;
+                                    x--;
+                                }
 
-                            countMistakes++;
-                        }
-                        else if (Console.ReadLine() == "pick up chicken")
-                        {
-                            Console.WriteLine("You pick up the chicken");
-                            countMistakes++;
-                            chicken = true;
-                        }
-                        else if (x == 0 & y == 1 & Console.ReadLine() == "enter house")
-                        {
-                            countMistakes++;
-                            x++;
-                            y++;
-                        }
-                        else if (x == 2 & y == 1 & Console.ReadLine() == "Pick up pizza")
-                        {
-                            pizza = true;
-                        }
-                        else if (x == 2 & y == 1 & Console.ReadLine() == "Eat pizza")
-                        {
-                            if (pizza == true)
+                                countMistakes++;
+                            }
+                            else if (Console.ReadLine() == "pick up chicken")
                             {
-                                pizzaeaten++;
+                                Console.WriteLine("You pick up the chicken");
+                                countMistakes++;
+                                chicken = true;
+                            }
+                            else if (x == 0 & y == 1 & Console.ReadLine() == "enter house")
+                            {
+                                countMistakes++;
+                                x++;
+                                y++;
+                            }
+                            else if (x == 2 & y == 1 & Console.ReadLine() == "Pick up pizza")
+                            {
+                                pizza = true;
+                            }
+                            else if (x == 2 & y == 1 & Console.ReadLine() == "Eat pizza")
+                            {
+                                if (pizza == true)
+                                {
+                                    pizzaeaten++;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Need to pick up pizza first.");
+                                }
+                            }
+                            else if (pizzaeaten >= 5)
+                            {
+                                Console.WriteLine("You loose, died from eating too much.");
+                                L++;
                             }
                             else
                             {
-                                Console.WriteLine("Need to pick up pizza first.");
+                                Console.WriteLine("Invalid Action");
+                                countMistakes++;
+                            }
+                            if (chicken = true & Console.ReadLine() == "victory")
+                            {
+                                Console.WriteLine("You win");
+                                W++;
+                            }
+                            else if (chicken = false & Console.ReadLine() == "victory")
+                            {
+                                Console.WriteLine("YOU LOOSE, try to find the hidden item to win.");
+                                L++;
+                            }
+
+                            if (x == 0 & y == 0)
+                            {
+                                Console.WriteLine(r1.getName() + Environment.NewLine + r1.getDescription());
+                            }
+                            else if (x == -1 & y == 0)
+                            {
+                                Console.WriteLine("Impassable area, so you head back.");
+                                x++;
+                            }
+                            else if (x == 0 & y == -1)
+                            {
+                                Console.WriteLine("Impassable area, so you head back.");
+                                y++;
+                            }
+                            else if (x == -1 & y == -1)
+                            {
+                                Console.WriteLine("Impassable area, so you head back.");
+                                x++;
+                                y++;
+                            }
+                            else if (x == 1 & y == 1)
+                            {
+                                Console.WriteLine(r4.getName() + Environment.NewLine + r4.getDescription());
+                            }
+                            else if (x == 1 & y == 0)
+                            {
+                                Console.WriteLine(r2.getName() + Environment.NewLine + r2.getDescription());
+                            }
+                            else if (x == 0 & y == 1)
+                            {
+                                Console.WriteLine(r3.getName() + Environment.NewLine + r3.getDescription());
+                            }
+                            else if (x == 0 & y == 2)
+                            {
+                                Console.WriteLine(r5.getName() + Environment.NewLine + r5.getDescription());
+                            }
+                            else if (x == 1 & y == 2)
+                            {
+                                Console.WriteLine(r6.getName() + Environment.NewLine + r6.getDescription());
+                            }
+                            else if (x == 2 & y == 2)
+                            {
+                                Console.WriteLine(r7.getName() + Environment.NewLine + r7.getDescription());
+                            }
+                            else if (x == 2 & y == 0)
+                            {
+                                Console.WriteLine(r8.getName() + Environment.NewLine + r8.getDescription());
+                            }
+                            else if (x == 2 & y == 1)
+                            {
+                                Console.WriteLine(r9.getName() + Environment.NewLine + r9.getDescription());
+                            }
+                            else if (x == 0 & y == 3)
+                            {
+                                Console.WriteLine(r10.getName() + Environment.NewLine + r10.getDescription());
+                            }
+                            else if (x == 1 & y == 3)
+                            {
+                                Console.WriteLine(r11.getName() + Environment.NewLine + r11.getDescription());
+                            }
+                            else if (x == 2 & y == 3)
+                            {
+                                Console.WriteLine(r12.getName() + Environment.NewLine + r12.getDescription());
+                            }
+                            else if (x == 3 & y == 3)
+                            {
+                                Console.WriteLine(r13.getName() + Environment.NewLine + r3.getDescription());
+                            }
+                            else if (x == 3 & y == 0)
+                            {
+                                Console.WriteLine(r14.getName() + Environment.NewLine + r14.getDescription());
+                            }
+                            else if (x == 3 & y == 1)
+                            {
+                                Console.WriteLine(r15.getName() + Environment.NewLine + r15.getDescription());
+                            }
+                            else if (x == 3 & y == 2)
+                            {
+                                Console.WriteLine(r16.getName() + Environment.NewLine + r16.getDescription());
+                            }
+                            else
+                            {
+                                Console.WriteLine("You got tired so you head back to the library and rest. Where do you want to go or do now?");
+                                x = 0;
+                                y = 0;
+                            }
+                            if (countMistakes >= 20)
+                            {
+                                Console.WriteLine("YOU LOOSE");
+                                L++;
                             }
                         }
-                        else if (pizzaeaten >= 5)
-                        {
-                            Console.WriteLine("You loose, died from eating too much.");
-                            L++;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid Action");
-                            countMistakes++;
-                        }
-                        if (chicken = true & Console.ReadLine() == "victory")
-                        {
-                            Console.WriteLine("You win");
-                            W++;
-                        }
-                        else if (chicken = false & Console.ReadLine() == "victory")
-                        {
-                            Console.WriteLine("YOU LOOSE, try to find the hidden item to win.");
-                            L++;
-                        }
-
-                        if (x == 0 & y == 0)
-                        {
-                            Console.WriteLine(r1.getName() + Environment.NewLine + r1.getDescription());
-                        }
-                        else if (x == -1 & y == 0)
-                        {
-                            Console.WriteLine("Impassable area, so you head back.");
-                            x++;
-                        }
-                        else if (x == 0 & y == -1)
-                        {
-                            Console.WriteLine("Impassable area, so you head back.");
-                            y++;
-                        }
-                        else if (x == -1 & y == -1)
-                        {
-                            Console.WriteLine("Impassable area, so you head back.");
-                            x++;
-                            y++;
-                        }
-                        else if (x == 1 & y == 1)
-                        {
-                            Console.WriteLine(r4.getName() + Environment.NewLine + r4.getDescription());
-                        }
-                        else if (x == 1 & y == 0)
-                        {
-                            Console.WriteLine(r2.getName() + Environment.NewLine + r2.getDescription());
-                        }
-                        else if (x == 0 & y == 1)
-                        {
-                            Console.WriteLine(r3.getName() + Environment.NewLine + r3.getDescription());
-                        }
-                        else if (x == 0 & y == 2)
-                        {
-                            Console.WriteLine(r5.getName() + Environment.NewLine + r5.getDescription());
-                        }
-                        else if (x == 1 & y == 2)
-                        {
-                            Console.WriteLine(r6.getName() + Environment.NewLine + r6.getDescription());
-                        }
-                        else if (x == 2 & y == 2)
-                        {
-                            Console.WriteLine(r7.getName() + Environment.NewLine + r7.getDescription());
-                        }
-                        else if (x == 2 & y == 0)
-                        {
-                            Console.WriteLine(r8.getName() + Environment.NewLine + r8.getDescription());
-                        }
-                        else if (x == 2 & y == 1)
-                        {
-                            Console.WriteLine(r9.getName() + Environment.NewLine + r9.getDescription());
-                        }
-                        else if (x == 0 & y == 3)
-                        {
-                            Console.WriteLine(r10.getName() + Environment.NewLine + r10.getDescription());
-                        }
-                        else if (x == 1 & y == 3)
-                        {
-                            Console.WriteLine(r11.getName() + Environment.NewLine + r11.getDescription());
-                        }
-                        else if (x == 2 & y == 3)
-                        {
-                            Console.WriteLine(r12.getName() + Environment.NewLine + r12.getDescription());
-                        }
-                        else if (x == 3 & y == 3)
-                        {
-                            Console.WriteLine(r13.getName() + Environment.NewLine + r3.getDescription());
-                        }
-                        else if (x == 3 & y == 0)
-                        {
-                            Console.WriteLine(r14.getName() + Environment.NewLine + r14.getDescription());
-                        }
-                        else if (x == 3 & y == 1)
-                        {
-                            Console.WriteLine(r15.getName() + Environment.NewLine + r15.getDescription());
-                        }
-                        else if (x == 3 & y == 2)
-                        {
-                            Console.WriteLine(r16.getName() + Environment.NewLine + r16.getDescription());
-                        }
-                        else
-                        {
-                            Console.WriteLine("You got tired so you head back to the library and rest. Where do you want to go or do now?");
-                            x = 0;
-                            y = 0;
-                        }
-                        if (countMistakes >= 20)
-                        {
-                            Console.WriteLine("YOU LOOSE");
-                            L++;
-                        }
+                        Console.WriteLine("Pick another game: Single Pile Nim, Multuple Pile Nim, or Kroz. Or type Score to see your win/loss ratio.");
                     }
-                    Console.WriteLine("Pick another game: Single Pile Nim, Multuple Pile Nim, or Kroz. Or type Score to see your win/loss ratio.");
-                }
-                else if (Console.ReadLine() == "Score")
-                {
-                    Console.WriteLine("Your win rate is {0}", W);
-                    Console.WriteLine("Your loss rate is {0}", L);
-                    Console.WriteLine("Type in another game. Your options are Single Pile Nim, Multuple Pile Nim, or Kroz.");
+                    else if (Console.ReadLine() == "Score")
+                    {
+                        Console.WriteLine("Your win rate is {0}", W);
+                        Console.WriteLine("Your loss rate is {0}", L);
+                        Console.WriteLine("Type in another game. Your options are Single Pile Nim, Multuple Pile Nim, or Kroz.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid game or mistyped. Please try it again, your choices are Single Pile Nim, Multuple Pile Nim, or Kroz.");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Invalid game or mistyped. Please try it again, your choices are Single Pile Nim, Multuple Pile Nim, or Kroz.");
+                    Console.WriteLine("Pick a game to play: Single Pile Nim, Multuple Pile Nim, or Kroz. Or type Score to see your score.");
                 }
             }
         }
