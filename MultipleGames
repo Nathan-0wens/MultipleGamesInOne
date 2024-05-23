@@ -18,13 +18,12 @@ namespace Games_CSharp
             int L = 0;
             while (true)
             {
-                Console.WriteLine("Type QUIT to quit any game at any time.");
+                Console.WriteLine("Type in another game at any point to switch games");
                 Console.WriteLine("Type in Score to see your score at any point.");
                 Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Kroz, please type in the full name correctly.");
                 string gamenumber = "";
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 gamenumber = Console.ReadLine();
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
                 if (gamenumber == "Single Pile Nim")
                 {
                     //Piles and taking from them
@@ -48,17 +47,13 @@ namespace Games_CSharp
                         gameIsOver = false;
 
                         Console.WriteLine("Single Pile NIM\n---------------\n");
-
+                        Console.WriteLine("There are {0} tokens left", currentNum);
                         //Session Loop
                         while (!gameIsOver)
                         {
                             // Player's Turn
                             validInput = false;
                             whoseTurn = 1;
-                            if (Console.ReadLine() == "Quit")
-                            {
-                                validInput = true;
-                            }
                             if (!validInput)
                             {
                                 //Get an integer
@@ -66,7 +61,18 @@ namespace Games_CSharp
                                 {
                                     Console.WriteLine("Remaining total is: {0}", currentNum);
                                     Console.WriteLine("How much will you take (1-{0})?", maxTake);
-
+                                    if (Console.ReadLine() == "Kroz")
+                                    {
+                                        gamenumber = "Kroz";
+                                    }
+                                    else if (Console.ReadLine() == "Multiple Pile Nim")
+                                    {
+                                        gamenumber = "Multiple Pile Nim";
+                                    }
+                                    else if (Console.ReadLine() == "Single Pile Nim")
+                                    {
+                                        gamenumber = "Single Pile Nim";
+                                    }
                                     bool success = int.TryParse(Console.ReadLine(), out takeAmount);
 
                                     if (success)
@@ -142,10 +148,6 @@ namespace Games_CSharp
                         }
 
                     }
-                    if (Console.ReadLine() == "QUIT")
-                    {
-                        Console.WriteLine("Pick another game: Single Pile Nim, Multuple Pile Nim, or Kroz. Or type Score to see your win/loss ratio.");
-                    }
                 }
                 // Multiple Pile Nim Code
                 else if (gamenumber == "Multiple Pile Nim")
@@ -192,10 +194,6 @@ namespace Games_CSharp
                         //Session Loop
                         while (!gameIsOver)
                         {
-                            if (Console.ReadLine() == "Quit")
-                            {
-                                gameIsOver = true;
-                            }
                             maxTake1 = Math.Min(5, currentNum1);
                             maxTake2 = Math.Min(5, currentNum2);
                             maxTake3 = Math.Min(5, currentNum3);
@@ -211,11 +209,35 @@ namespace Games_CSharp
                                     Console.WriteLine("Remaining total from the second pile is: {0}", currentNum2);
                                     Console.WriteLine("Remaining total from the third pile is: {0}", currentNum3);
                                     Console.WriteLine("Which pile do you want to take from? 1-3");
+                                    if (Console.ReadLine() == "Kroz")
+                                    {
+                                        gamenumber = Console.ReadLine();
+                                    }
+                                    else if (Console.ReadLine() == "Multiple Pile Nim")
+                                    {
+                                        gamenumber = Console.ReadLine();
+                                    }
+                                    else if (Console.ReadLine() == "Single Pile Nim")
+                                    {
+                                        gamenumber = Console.ReadLine();
+                                    }
                                     int.TryParse(Console.ReadLine(), out pilenumber);
 
                                     if (pilenumber == 1)
                                     {
                                         Console.WriteLine("You are taking from pile one. How many tokens do you take (1 - {0})?", maxTake1);
+                                        if (Console.ReadLine() == "Kroz")
+                                        {
+                                            gamenumber = "Kroz";
+                                        }
+                                        else if (Console.ReadLine() == "Multiple Pile Nim")
+                                        {
+                                            gamenumber = "Multiple Pile Nim";
+                                        }
+                                        else if (Console.ReadLine() == "Single Pile Nim")
+                                        {
+                                            gamenumber = "Single Pile Nim";
+                                        }
                                         bool success1 = int.TryParse(Console.ReadLine(), out takeAmount1);
                                         if (success1)
                                         {
@@ -467,20 +489,11 @@ namespace Games_CSharp
                             }
                         }
                     }
-                    if (Console.ReadLine() == "QUIT")
-                    {
-                        Console.WriteLine("Pick another game: Single Pile Nim, Multuple Pile Nim, or Kroz. Or type Score to see your win/loss ratio.");
-                    }
                 }
                 else if (gamenumber == "Kroz")
                 {
-                    int a = 0;
-                    while (a == 0)
+                    while (true)
                     {
-                        if (Console.ReadLine() == "Quit")
-                        {
-                            a = 1;
-                        }
                         Console.WriteLine("Find the hidden item and say (victory) to win, but if you don't have it you DIE. Type QUIT at any point to quit this game.");
                         bool chicken = false;
                         bool pizza = false;
@@ -506,6 +519,18 @@ namespace Games_CSharp
                         Room r15 = new("Bridge to nowhere", "There is just a random bridge here that goes into the air and ends in the air, so you won't get across anything just most likely mess up and die. Also, you can't go around it due to the impassable terrain.");
                         Room r16 = new("Teleporter", "You see a teleporter with a sign near it saying (teleport), but you don't know where it goes or if it is a trap.");
                         Console.WriteLine(startingPoint.getName() + Environment.NewLine + startingPoint.getDescription());
+                        if (Console.ReadLine() == "Kroz")
+                        {
+                            gamenumber = "Kroz";
+                        }
+                        else if (Console.ReadLine() == "Multiple Pile Nim")
+                        {
+                            gamenumber = "Multiple Pile Nim";
+                        }
+                        else if (Console.ReadLine() == "Single Pile Nim")
+                        {
+                            gamenumber = "Single Pile Nim";
+                        }
                         if (Console.ReadLine() == "look")
                         {
                             Console.WriteLine("You see some stars");
@@ -744,7 +769,6 @@ namespace Games_CSharp
                             L++;
                         }
                     }
-                    Console.WriteLine("Pick another game: Single Pile Nim, Multuple Pile Nim, or Kroz. Or type Score to see your win/loss ratio.");
                 }
                 else if (Console.ReadLine() == "Score")
                 {
