@@ -16,9 +16,9 @@ namespace Games_CSharp
         {
             int W = 0;
             int L = 0;
-            Console.WriteLine("Type QUIT to quit any game at any time.");
             while (true)
             {
+                Console.WriteLine("Type QUIT to quit any game at any time.");
                 Console.WriteLine("Type in Score to see your score at any point.");
                 Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Kroz, please type in the full name correctly.");
                 string gamenumber = "";
