@@ -1,5 +1,5 @@
 //Date in day/month/year format for newest update: 24/5/2024
-//I suggest you copy the Single Pile Nim, Multiple Pile Nim, or Kroz from the text the console wrote at the start that way you won't mistype it.
+//I suggest you copy the Single Pile Nim, Multiple Pile Nim, or Zookkooz from the text the console wrote at the start that way you won't mistype it.
 using MultipleGames;
 using System;
 using System.Collections.Generic;
@@ -14,6 +14,23 @@ namespace Games_CSharp
 
         public static void Main(string[] Games)
         {
+            Room startingPoint = new("Entry Way", "You realize you are stuck in a game and need something and then to say victory to win. Looking around you see that you \n are in a lovely marble enterance to the Library");
+            Room r1 = new("Field", "Lovely Place to Be");
+            Room r2 = new("Elm Stree", "Its Scary");
+            Room r3 = new("House", "It is tiny and white and there is an open window so you can enter the house");
+            Room r4 = new("School", "There are a lot of textbooks and a window that you can't get through");
+            Room r5 = new("Darkness???", "You could swear that it was still daytime, yet there is not a speck of light.");
+            Room r6 = new("Chicken???", "In a massive open area you see a random chicken");
+            Room r7 = new("Treehouse", "There is no way to enter it, but it looks neat.");
+            Room r8 = new("Beach", "It is very sandy, and the water looks undrinkable");
+            Room r9 = new("Restaurant", "No one is here, yet you can see tons of tasty free pizza. Though eating too much pizza could kill you, you are still very hungry.");
+            Room r10 = new("Inside the house", "You can see nothing except for the window you entered through.");
+            Room r11 = new("Another School???", "There is one window that you can't get through and tons of school supplies inside.");
+            Room r12 = new("Light?", "There is so much light it is blinding and you can't se anything.");
+            Room r13 = new("Cave", "You see a cave north of your position, but the ground leading up that way is impassable");
+            Room r14 = new("Massive Tree", "The tree is huge, and it looks like it could walk but it is sleeping, luckily the gound is impassable North so you are safe.");
+            Room r15 = new("Bridge to nowhere", "There is just a random bridge here that goes into the air and ends in the air, so you won't get across anything just most likely mess up and die. Also, you can't go around it due to the impassable terrain.");
+            Room r16 = new("Teleporter", "You see a teleporter with a sign near it saying (teleport), but you don't know where it goes or if it is a trap.");
             bool chicken = false;
             bool pizza = false;
             int pizzaeaten = 0;
@@ -25,7 +42,7 @@ namespace Games_CSharp
             while (true)
             {
                 Console.WriteLine("Type in Score to see your score at any point.");
-                Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Kroz, please type in the full name correctly.");
+                Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Zookkooz, please type in the full name correctly.");
                 string gamenumber = "";
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 gamenumber = Console.ReadLine();
@@ -459,29 +476,12 @@ namespace Games_CSharp
                         }
                     }
                 }
-                else if (gamenumber == "Kroz")
+                else if (gamenumber == "Zookkooz")
                 {
                     Console.WriteLine("Find the hidden item and say (victory) to win, but if you don't have it you DIE.");
+                    Console.WriteLine(startingPoint.getName() + Environment.NewLine + startingPoint.getDescription());
                     while (true)
                     {
-                        Room startingPoint = new("Entry Way", "You realize you are stuck in a game and need something and then to say victory to win. Looking around you see that you are in a lovely marble enterance to the Library");
-                        Room r1 = new("Field", "Lovely Place to Be");
-                        Room r2 = new("Elm Stree", "Its Scary");
-                        Room r3 = new("House", "It is tiny and white and there is an open window so you can enter the house");
-                        Room r4 = new("School", "There are a lot of textbooks and a window that you can't get through");
-                        Room r5 = new("Darkness???", "You could swear that it was still daytime, yet there is not a speck of light.");
-                        Room r6 = new("Chicken???", "In a massive open area you see a random chicken");
-                        Room r7 = new("Treehouse", "There is no way to enter it, but it looks neat.");
-                        Room r8 = new("Beach", "It is very sandy, and the water looks undrinkable");
-                        Room r9 = new("Restaurant", "No one is here, yet you can see tons of tasty free pizza. Though eating too much pizza could kill you, you are still very hungry.");
-                        Room r10 = new("Inside the house", "You can see nothing except for the window you entered through.");
-                        Room r11 = new("Another School???", "There is one window that you can't get through and tons of school supplies inside.");
-                        Room r12 = new("Light?", "There is so much light it is blinding and you can't se anything.");
-                        Room r13 = new("Cave", "You see a cave north of your position, but the ground leading up that way is impassable");
-                        Room r14 = new("Massive Tree", "The tree is huge, and it looks like it could walk but it is sleeping, luckily the gound is impassable North so you are safe.");
-                        Room r15 = new("Bridge to nowhere", "There is just a random bridge here that goes into the air and ends in the air, so you won't get across anything just most likely mess up and die. Also, you can't go around it due to the impassable terrain.");
-                        Room r16 = new("Teleporter", "You see a teleporter with a sign near it saying (teleport), but you don't know where it goes or if it is a trap.");
-                        Console.WriteLine(startingPoint.getName() + Environment.NewLine + startingPoint.getDescription());
                         if (Console.ReadLine() == "look")
                         {
                             Console.WriteLine("You see some stars");
@@ -605,17 +605,17 @@ namespace Games_CSharp
                         {
                             Console.WriteLine(r1.getName() + Environment.NewLine + r1.getDescription());
                         }
-                        else if (x == -1 & y == 0)
+                        else if (x == -1 & y >= 0)
                         {
                             Console.WriteLine("Impassable area, so you head back.");
                             x++;
                         }
-                        else if (x == 0 & y == -1)
+                        else if (x >= 0 & y == -1)
                         {
                             Console.WriteLine("Impassable area, so you head back.");
                             y++;
                         }
-                        else if (x == -1 & y == -1)
+                        else if (x <= -1 & y <= -1)
                         {
                             Console.WriteLine("Impassable area, so you head back.");
                             x++;
@@ -683,14 +683,26 @@ namespace Games_CSharp
                         }
                         else
                         {
-                            Console.WriteLine("You got tired so you head back to the library and rest. Where do you want to go or do now?");
-                            x = 0;
-                            y = 0;
+                            Random ran = new();
+                            int luck = ran.Next(0, 10);
+                            if (3 < luck || 7 > luck)
+                            {
+                                Console.WriteLine("You were walking back and got lost, there is a chicken here.");
+                                x = 1;
+                                y = 2;
+                            }
+                            else
+                            {
+                                Console.WriteLine("You got tired so you head back to the library and rest. Where do you want to go or do now?");
+                                x = 0;
+                                y = 0;
+                            }
                         }
                         if (countMistakes >= 20)
                         {
-                            Console.WriteLine("YOU LOOSE");
+                            Console.WriteLine("YOU LOOSE, Zookkooz is restarted back to the start.");
                             L++;
+                            gamenumber = "";
                         }
                     }
                 }
@@ -698,13 +710,13 @@ namespace Games_CSharp
                 {
                     Console.WriteLine("Your win rate is {0}", W);
                     Console.WriteLine("Your loss rate is {0}", L);
-                    Console.WriteLine("Type in another game. Your options are Single Pile Nim, Multuple Pile Nim, or Kroz.");
+                    Console.WriteLine("Type in another game. Your options are Single Pile Nim, Multuple Pile Nim, or Zookkooz.");
                 }
                 else
                 {
-                    Console.WriteLine("Invalid game or mistyped. Please try it again, your choices are Single Pile Nim, Multuple Pile Nim, or Kroz.");
+                    Console.WriteLine("Invalid game or mistyped. Please try it again, your choices are Single Pile Nim, Multuple Pile Nim, or Zookkooz.");
                 }
-                Console.WriteLine("Pick a game to play: Single Pile Nim, Multuple Pile Nim, or Kroz. Or type Score to see your score.");
+                Console.WriteLine("Pick a game to play: Single Pile Nim, Multuple Pile Nim, or Zookkooz. Or type Score to see your score.");
             }
         }
     }
