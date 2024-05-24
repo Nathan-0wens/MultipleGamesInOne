@@ -14,6 +14,7 @@ namespace Games_CSharp
 
         public static void Main(string[] Games)
         {
+            // Rooms for Zookkooz
             Room startingPoint = new("Entry Way", "You realize you are stuck in a game and need something and then to say victory to win. Looking around you see that you \n are in a lovely marble enterance to the Library");
             Room r1 = new("Field", "Lovely Place to Be");
             Room r2 = new("Elm Stree", "Its Scary");
@@ -31,14 +32,24 @@ namespace Games_CSharp
             Room r14 = new("Massive Tree", "The tree is huge, and it looks like it could walk but it is sleeping, luckily the gound is impassable North so you are safe.");
             Room r15 = new("Bridge to nowhere", "There is just a random bridge here that goes into the air and ends in the air, so you won't get across anything just most likely mess up and die. Also, you can't go around it due to the impassable terrain.");
             Room r16 = new("Teleporter", "You see a teleporter with a sign near it saying (teleport), but you don't know where it goes or if it is a trap.");
+
+            //items for Zookkooz
             bool chicken = false;
             bool pizza = false;
+
+            //Things to kill you in Zookooz
             int pizzaeaten = 0;
             int countMistakes = 0;
+
+            //Keeps track of where you are in Zookooz
             int x = 0;
             int y = 0;
+
+            //W is Wins and L is Losses
             int W = 0;
             int L = 0;
+
+            //Starts the game
             while (true)
             {
                 Console.WriteLine("Type in Score to see your score at any point.");
