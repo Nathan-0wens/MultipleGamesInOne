@@ -497,6 +497,7 @@ namespace Games_CSharp
                         }
                     }
                 }
+                //Main Game loop for Zookkooz
                 else if (gamenumber == "Zookkooz")
                 {
                     bool gameloop = true;
@@ -504,79 +505,79 @@ namespace Games_CSharp
                     Console.WriteLine(startingPoint.getName() + Environment.NewLine + startingPoint.getDescription());
                     while (gameloop == true)
                     {
-                        if (Console.ReadLine() == "look")
+                        if (gamenumber == "look")
                         {
                             Console.WriteLine("You see some stars");
                             countMistakes++;
                             a = 5;
                         }
-                        else if (Console.ReadLine() == "n" || Console.ReadLine() == "N")
+                        else if (gamenumber == "n" || gamenumber == "N")
                         {
                             x++;
                             countMistakes++;
                             a = 5;
                         }
-                        else if (Console.ReadLine() == "s" || Console.ReadLine() == "S")
+                        else if (gamenumber == "s" || gamenumber == "S")
                         {
                             x--;
                             countMistakes++;
                             a = 5;
                         }
-                        else if (Console.ReadLine() == "w" || Console.ReadLine() == "W")
+                        else if (gamenumber == "w" || gamenumber == "W")
                         {
                             y++;
                             countMistakes++;
                             a = 5;
                         }
-                        else if (Console.ReadLine() == "e" || Console.ReadLine() == "E")
+                        else if (gamenumber == "e" || gamenumber == "E")
                         {
                             y--;
                             countMistakes++;
                             a = 5;
                         }
-                        else if (Console.ReadLine() == "ne" || Console.ReadLine() == "NE")
+                        else if (gamenumber == "ne" || gamenumber == "NE")
                         {
                             y--;
                             x++;
                             countMistakes++;
                             a = 5;
                         }
-                        else if (Console.ReadLine() == "nw" || Console.ReadLine() == "NW")
+                        else if (gamenumber == "nw" || gamenumber == "NW")
                         {
                             y++;
                             x++;
                             countMistakes++;
                             a = 5;
                         }
-                        else if (Console.ReadLine() == "se" || Console.ReadLine() == "SE")
+                        else if (gamenumber == "se" || gamenumber == "SE")
                         {
                             y--;
                             x--;
                             countMistakes++;
                             a = 5;
                         }
-                        else if (Console.ReadLine() == "sw" || Console.ReadLine() == "SW")
+                        else if (gamenumber == "sw" || gamenumber == "SW")
                         {
                             y++;
                             x--;
                             a = 5;
                             countMistakes++;
                         }
-                        else if (Console.ReadLine() == "pick up chicken")
+                        else if (gamenumber == "pick up chicken")
                         {
                             Console.WriteLine("You pick up the chicken");
                             countMistakes++;
                             chicken = true;
                             a = 5;
                         }
-                        else if (x == 0 & y == 1 & Console.ReadLine() == "enter house")
+                        else if (x == 0 & y == 1 & gamenumber == "enter house")
                         {
                             countMistakes++;
                             x++;
                             y++;
                             a = 5;
                         }
-                        else if (x == 1 & y == 2 & Console.ReadLine() == "leave house")
+                        else if (x == 1 & y == 2 & gamenumber == "leave house")
                         {
                             countMistakes++;
                             x--;
@@ -588,12 +589,12 @@ namespace Games_CSharp
                             Console.WriteLine("You must (leave house) first.");
                             countMistakes++;
                         }
-                        else if (x == 2 & y == 1 & Console.ReadLine() == "Pick up pizza")
+                        else if (x == 2 & y == 1 & gamenumber == "Pick up pizza")
                         {
                             pizza = true;
                             a = 5;
                         }
-                        else if (x == 2 & y == 1 & Console.ReadLine() == "Eat pizza")
+                        else if (x == 2 & y == 1 & gamenumber == "Eat pizza")
                         {
                             if (pizza == true)
                             {
@@ -612,19 +613,19 @@ namespace Games_CSharp
                             L++;
                             a = 5;
                         }
-                        else if (chicken = true & Console.ReadLine() == "victory")
+                        else if (chicken = true & gamenumber == "victory")
                         {
                             Console.WriteLine("You win");
                             W++;
                             a = 5;
                         }
-                        else if (chicken = false & Console.ReadLine() == "victory")
+                        else if (chicken = false & gamenumber == "victory")
                         {
                             Console.WriteLine("YOU LOOSE, try to find the hidden item to win.");
                             L++;
                             a = 5;
                         }
-                        else if (x == 3 & y == 2 & Console.ReadLine() == "teleport")
+                        else if (x == 3 & y == 2 & gamenumber == "teleport")
                         {
                             x = 1;
                             y = 2;
