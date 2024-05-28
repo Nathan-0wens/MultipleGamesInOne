@@ -1,4 +1,4 @@
-//Date in day/month/year format for newest update: 24/5/2024
+//Date in day/month/year format for newest update: 28/5/2024
 //I suggest you copy the Single Pile Nim, Multiple Pile Nim, or Zookkooz from the text the console wrote at the start that way you won't mistype it.
 using MultipleGames;
 using System;
@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+
 namespace Games_CSharp
 {
     //Single Pile Nim Code
@@ -44,6 +46,7 @@ namespace Games_CSharp
             //Keeps track of where you are in Zookooz
             int x = 0;
             int y = 0;
+            int a = 0;
 
             //W is Wins and L is Losses
             int W = 0;
@@ -55,7 +58,6 @@ namespace Games_CSharp
                 Console.WriteLine("Type in Score to see your score at any point.");
                 Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Zookkooz, please type in the full name correctly.");
                 string gamenumber = "";
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 gamenumber = Console.ReadLine();
                 if (gamenumber == "Single Pile Nim")
                 {
@@ -489,62 +491,67 @@ namespace Games_CSharp
                 }
                 else if (gamenumber == "Zookkooz")
                 {
+                    bool gameloop = true;
                     Console.WriteLine("Find the hidden item and say (victory) to win, but if you don't have it you DIE.");
                     Console.WriteLine(startingPoint.getName() + Environment.NewLine + startingPoint.getDescription());
-                    while (true)
+                    while (gameloop == true)
                     {
                         if (Console.ReadLine() == "look")
                         {
                             Console.WriteLine("You see some stars");
                             countMistakes++;
+                            a = 5;
                         }
                         else if (Console.ReadLine() == "n" || Console.ReadLine() == "N")
                         {
                             x++;
                             countMistakes++;
+                            a = 5;
                         }
                         else if (Console.ReadLine() == "s" || Console.ReadLine() == "S")
                         {
                             x--;
                             countMistakes++;
+                            a = 5;
                         }
                         else if (Console.ReadLine() == "w" || Console.ReadLine() == "W")
                         {
-                            {
                                 y++;
                                 countMistakes++;
-                            }
+                                a = 5;
                         }
                         else if (Console.ReadLine() == "e" || Console.ReadLine() == "E")
                         {
-                            {
                                 y--;
                                 countMistakes++;
-                            }
+                            a = 5;
                         }
                         else if (Console.ReadLine() == "ne" || Console.ReadLine() == "NE")
                         {
                             y--;
                             x++;
                             countMistakes++;
+                            a = 5;
                         }
                         else if (Console.ReadLine() == "nw" || Console.ReadLine() == "NW")
                         {
                             y++;
                             x++;
                             countMistakes++;
+                            a = 5;
                         }
                         else if (Console.ReadLine() == "se" || Console.ReadLine() == "SE")
                         {
                             y--;
                             x--;
                             countMistakes++;
+                            a = 5;
                         }
                         else if (Console.ReadLine() == "sw" || Console.ReadLine() == "SW")
                         {
                             y++;
                             x--;
-
+                            a = 5;
                             countMistakes++;
                         }
                         else if (Console.ReadLine() == "pick up chicken")
@@ -552,18 +559,21 @@ namespace Games_CSharp
                             Console.WriteLine("You pick up the chicken");
                             countMistakes++;
                             chicken = true;
+                            a = 5;
                         }
                         else if (x == 0 & y == 1 & Console.ReadLine() == "enter house")
                         {
                             countMistakes++;
                             x++;
                             y++;
+                            a = 5;
                         }
                         else if (x == 1 & y == 2 & Console.ReadLine() == "leave house")
                         {
                             countMistakes++;
                             x--;
                             y--;
+                            a = 5;
                         }
                         else if (x == 1 & y == 2 & Console.ReadLine() != "leave house")
                         {
@@ -573,145 +583,176 @@ namespace Games_CSharp
                         else if (x == 2 & y == 1 & Console.ReadLine() == "Pick up pizza")
                         {
                             pizza = true;
+                            a = 5;
                         }
                         else if (x == 2 & y == 1 & Console.ReadLine() == "Eat pizza")
                         {
                             if (pizza == true)
                             {
+                                a = 5;
                                 pizzaeaten++;
                             }
                             else
                             {
                                 Console.WriteLine("Need to pick up pizza first.");
+                                a = 5;
                             }
                         }
                         else if (pizzaeaten >= 5)
                         {
                             Console.WriteLine("You loose, died from eating too much.");
                             L++;
+                            a = 5;
                         }
                         else if (chicken = true & Console.ReadLine() == "victory")
                         {
                             Console.WriteLine("You win");
                             W++;
+                            a = 5;
                         }
                         else if (chicken = false & Console.ReadLine() == "victory")
                         {
                             Console.WriteLine("YOU LOOSE, try to find the hidden item to win.");
                             L++;
+                            a = 5;
                         }
                         else if (x == 3 & y == 2 & Console.ReadLine() == "teleport")
                         {
                             x = 1;
                             y = 2;
                             countMistakes++;
+                            a = 5;
                         }
                         else
                         {
                             Console.WriteLine("Invalid Action");
                             countMistakes++;
+                            a = 5;
                         }
-
-                        if (x == 0 & y == 0)
+                        while (a != 0)
                         {
-                            Console.WriteLine(r1.getName() + Environment.NewLine + r1.getDescription());
-                        }
-                        else if (x == -1 & y >= 0)
-                        {
-                            Console.WriteLine("Impassable area, so you head back.");
-                            x++;
-                        }
-                        else if (x >= 0 & y == -1)
-                        {
-                            Console.WriteLine("Impassable area, so you head back.");
-                            y++;
-                        }
-                        else if (x <= -1 & y <= -1)
-                        {
-                            Console.WriteLine("Impassable area, so you head back.");
-                            x++;
-                            y++;
-                        }
-                        else if (x == 1 & y == 1)
-                        {
-                            Console.WriteLine(r4.getName() + Environment.NewLine + r4.getDescription());
-                        }
-                        else if (x == 1 & y == 0)
-                        {
-                            Console.WriteLine(r2.getName() + Environment.NewLine + r2.getDescription());
-                        }
-                        else if (x == 0 & y == 1)
-                        {
-                            Console.WriteLine(r3.getName() + Environment.NewLine + r3.getDescription());
-                        }
-                        else if (x == 0 & y == 2)
-                        {
-                            Console.WriteLine(r5.getName() + Environment.NewLine + r5.getDescription());
-                        }
-                        else if (x == 1 & y == 2)
-                        {
-                            Console.WriteLine(r6.getName() + Environment.NewLine + r6.getDescription());
-                        }
-                        else if (x == 2 & y == 2)
-                        {
-                            Console.WriteLine(r7.getName() + Environment.NewLine + r7.getDescription());
-                        }
-                        else if (x == 2 & y == 0)
-                        {
-                            Console.WriteLine(r8.getName() + Environment.NewLine + r8.getDescription());
-                        }
-                        else if (x == 2 & y == 1)
-                        {
-                            Console.WriteLine(r9.getName() + Environment.NewLine + r9.getDescription());
-                        }
-                        else if (x == 0 & y == 3)
-                        {
-                            Console.WriteLine(r10.getName() + Environment.NewLine + r10.getDescription());
-                        }
-                        else if (x == 1 & y == 3)
-                        {
-                            Console.WriteLine(r11.getName() + Environment.NewLine + r11.getDescription());
-                        }
-                        else if (x == 2 & y == 3)
-                        {
-                            Console.WriteLine(r12.getName() + Environment.NewLine + r12.getDescription());
-                        }
-                        else if (x == 3 & y == 3)
-                        {
-                            Console.WriteLine(r13.getName() + Environment.NewLine + r3.getDescription());
-                        }
-                        else if (x == 3 & y == 0)
-                        {
-                            Console.WriteLine(r14.getName() + Environment.NewLine + r14.getDescription());
-                        }
-                        else if (x == 3 & y == 1)
-                        {
-                            Console.WriteLine(r15.getName() + Environment.NewLine + r15.getDescription());
-                        }
-                        else if (x == 3 & y == 2)
-                        {
-                            Console.WriteLine(r16.getName() + Environment.NewLine + r16.getDescription());
-                        }
-                        else
-                        {
-                            Random ran = new();
-                            int luck = ran.Next(0, 10);
-                            if (3 < luck || 7 > luck)
+                            if (x == 0 & y == 0)
                             {
-                                Console.WriteLine("You were walking back and got lost, there is a chicken here.");
-                                x = 1;
-                                y = 2;
+                                Console.WriteLine(r1.getName() + Environment.NewLine + r1.getDescription());
+                                a = 0;
+                            }
+                            else if (x == -1 & y >= 0)
+                            {
+                                Console.WriteLine("Impassable area, so you head back.");
+                                x++;
+                                a = 0;
+                            }
+                            else if (x >= 0 & y == -1)
+                            {
+                                Console.WriteLine("Impassable area, so you head back.");
+                                y++;
+                                a = 0;
+                            }
+                            else if (x <= -1 & y <= -1)
+                            {
+                                Console.WriteLine("Impassable area, so you head back.");
+                                x++;
+                                y++;
+                                a = 0;
+                            }
+                            else if (x == 1 & y == 1)
+                            {
+                                Console.WriteLine(r4.getName() + Environment.NewLine + r4.getDescription());
+                                a = 0;
+                            }
+                            else if (x == 1 & y == 0)
+                            {
+                                Console.WriteLine(r2.getName() + Environment.NewLine + r2.getDescription());
+                                a = 0;
+                            }
+                            else if (x == 0 & y == 1)
+                            {
+                                Console.WriteLine(r3.getName() + Environment.NewLine + r3.getDescription());
+                                a = 0;
+                            }
+                            else if (x == 0 & y == 2)
+                            {
+                                Console.WriteLine(r5.getName() + Environment.NewLine + r5.getDescription());
+                                a = 0;
+                            }
+                            else if (x == 1 & y == 2)
+                            {
+                                Console.WriteLine(r6.getName() + Environment.NewLine + r6.getDescription());
+                                a = 0;
+                            }
+                            else if (x == 2 & y == 2)
+                            {
+                                Console.WriteLine(r7.getName() + Environment.NewLine + r7.getDescription());
+                                a = 0;
+                            }
+                            else if (x == 2 & y == 0)
+                            {
+                                Console.WriteLine(r8.getName() + Environment.NewLine + r8.getDescription());
+                                a = 0;
+                            }
+                            else if (x == 2 & y == 1)
+                            {
+                                Console.WriteLine(r9.getName() + Environment.NewLine + r9.getDescription());
+                                a = 0;
+                            }
+                            else if (x == 0 & y == 3)
+                            {
+                                Console.WriteLine(r10.getName() + Environment.NewLine + r10.getDescription());
+                                a = 0;
+                            }
+                            else if (x == 1 & y == 3)
+                            {
+                                Console.WriteLine(r11.getName() + Environment.NewLine + r11.getDescription());
+                                a = 0;
+                            }
+                            else if (x == 2 & y == 3)
+                            {
+                                Console.WriteLine(r12.getName() + Environment.NewLine + r12.getDescription());
+                                a = 0;
+                            }
+                            else if (x == 3 & y == 3)
+                            {
+                                Console.WriteLine(r13.getName() + Environment.NewLine + r3.getDescription());
+                                a = 0;
+                            }
+                            else if (x == 3 & y == 0)
+                            {
+                                Console.WriteLine(r14.getName() + Environment.NewLine + r14.getDescription());
+                                a = 0;
+                            }
+                            else if (x == 3 & y == 1)
+                            {
+                                Console.WriteLine(r15.getName() + Environment.NewLine + r15.getDescription());
+                                a = 0;
+                            }
+                            else if (x == 3 & y == 2)
+                            {
+                                Console.WriteLine(r16.getName() + Environment.NewLine + r16.getDescription());
+                                a = 0;
                             }
                             else
                             {
-                                Console.WriteLine("You got tired so you head back to the library and rest. Where do you want to go or do now?");
-                                x = 0;
-                                y = 0;
+                                Random ran = new();
+                                int luck = ran.Next(0, 10);
+                                if (3 < luck || 7 > luck)
+                                {
+                                    Console.WriteLine("You were walking back and got lost, there is a chicken here.");
+                                    x = 1;
+                                    y = 2;
+                                    a = 0;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("You got tired so you head back to the library and rest. Where do you want to go or do now?");
+                                    x = 0;
+                                    y = 0;
+                                    a = 0;
+                                }
                             }
                         }
                         if (countMistakes >= 20)
                         {
-                            Console.WriteLine("YOU LOOSE, Zookkooz is restarted back to the start.");
+                            Console.WriteLine("YOU LOOSE, took too many actions before winning. Zookkooz is restarted back to the start.");
                             L++;
                             gamenumber = "";
                         }
