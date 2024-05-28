@@ -52,14 +52,22 @@ namespace Games_CSharp
             int W = 0;
             int L = 0;
 
+            //Used to find which game to play
+            string gamenumber = "";
+
+            //Explains how to play and what to say to play
+            Console.WriteLine("Type in Score to see your score.");
+            Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Zookkooz, please type in the \n full name correctly.");
             //Starts the game
             while (true)
             {
-                Console.WriteLine("Type in Score to see your score at any point.");
-                Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Zookkooz, please type in the full name correctly.");
-                string gamenumber = "";
                 gamenumber = Console.ReadLine();
-                if (gamenumber == "Single Pile Nim")
+                if (gamenumber == "help" || gamenumber == "Help" || gamenumber == "HELP")
+                {
+                    Console.WriteLine("Type in Score to see your score.");
+                    Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Zookkooz, please type in the \n full name correctly.");
+                }
+                else if (gamenumber == "Single Pile Nim")
                 {
                     //Piles and taking from them
                     Random ran = new();
@@ -516,14 +524,14 @@ namespace Games_CSharp
                         }
                         else if (Console.ReadLine() == "w" || Console.ReadLine() == "W")
                         {
-                                y++;
-                                countMistakes++;
-                                a = 5;
+                            y++;
+                            countMistakes++;
+                            a = 5;
                         }
                         else if (Console.ReadLine() == "e" || Console.ReadLine() == "E")
                         {
-                                y--;
-                                countMistakes++;
+                            y--;
+                            countMistakes++;
                             a = 5;
                         }
                         else if (Console.ReadLine() == "ne" || Console.ReadLine() == "NE")
@@ -758,7 +766,7 @@ namespace Games_CSharp
                         }
                     }
                 }
-                else if (Console.ReadLine() == "Score")
+                else if (gamenumber == "Score")
                 {
                     Console.WriteLine("Your win rate is {0}", W);
                     Console.WriteLine("Your loss rate is {0}", L);
@@ -768,7 +776,6 @@ namespace Games_CSharp
                 {
                     Console.WriteLine("Invalid game or mistyped. Please try it again, your choices are Single Pile Nim, Multuple Pile Nim, or Zookkooz.");
                 }
-                Console.WriteLine("Pick a game to play: Single Pile Nim, Multuple Pile Nim, or Zookkooz. Or type Score to see your score.");
             }
         }
     }
