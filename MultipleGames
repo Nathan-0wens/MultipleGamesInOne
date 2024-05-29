@@ -1,5 +1,4 @@
-//Date in day/month/year format for newest update: 28/5/2024
-//I suggest you copy the Single Pile Nim, Multiple Pile Nim, or Zookkooz from the text the console wrote at the start that way you won't mistype it.
+//Date in day/month/year format for newest update: 29/5/2024
 using MultipleGames;
 using System;
 using System.Collections.Generic;
@@ -505,6 +504,7 @@ namespace Games_CSharp
                     Console.WriteLine(startingPoint.getName() + Environment.NewLine + startingPoint.getDescription());
                     while (gameloop == true)
                     {
+                        gamenumber = Console.ReadLine();
                         if (gamenumber == "look")
                         {
                             Console.WriteLine("You see some stars");
@@ -568,23 +568,22 @@ namespace Games_CSharp
                             Console.WriteLine("You pick up the chicken");
                             countMistakes++;
                             chicken = true;
-                            a = 5;
                         }
                         else if (x == 0 & y == 1 & gamenumber == "enter house")
                         {
+                            Console.WriteLine("You enter the house");
                             countMistakes++;
                             x++;
                             y++;
-                            a = 5;
                         }
                         else if (x == 1 & y == 2 & gamenumber == "leave house")
                         {
+                            Console.WriteLine("You leave the house.");
                             countMistakes++;
                             x--;
                             y--;
-                            a = 5;
                         }
-                        else if (x == 1 & y == 2 & Console.ReadLine() != "leave house")
+                        else if (x == 1 & y == 2 & Console.ReadLine() != "leave house" & Console.ReadLine() != "victory")
                         {
                             Console.WriteLine("You must (leave house) first.");
                             countMistakes++;
@@ -617,7 +616,7 @@ namespace Games_CSharp
                         {
                             Console.WriteLine("You win");
                             W++;
-                            a = 5;
+                            gameloop = false;
                         }
                         else if (chicken = false & gamenumber == "victory")
                         {
@@ -637,6 +636,12 @@ namespace Games_CSharp
                             Console.WriteLine("Invalid Action");
                             countMistakes++;
                             a = 5;
+                        }
+                        if (countMistakes >= 20)
+                        {
+                            Console.WriteLine("YOU LOOSE, took too many actions before winning.");
+                            L++;
+                            gameloop = false;
                         }
                         while (a != 0)
                         {
@@ -758,12 +763,6 @@ namespace Games_CSharp
                                     a = 0;
                                 }
                             }
-                        }
-                        if (countMistakes >= 20)
-                        {
-                            Console.WriteLine("YOU LOOSE, took too many actions before winning. Zookkooz is restarted back to the start.");
-                            L++;
-                            gamenumber = "";
                         }
                     }
                 }
