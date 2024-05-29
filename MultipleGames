@@ -1,4 +1,5 @@
 //Date in day/month/year format for newest update: 29/5/2024
+//I suggest you copy the Single Pile Nim, Multiple Pile Nim, or Zookkooz from the text the console wrote at the start that way you won't mistype it.
 using MultipleGames;
 using System;
 using System.Collections.Generic;
@@ -70,7 +71,7 @@ namespace Games_CSharp
                 {
                     //Piles and taking from them
                     Random ran = new();
-                    int currentNum = ran.Next(10, 100);
+                    int currentNum = ran.Next(10, 50);
                     int takeAmount = 0;
                     int maxTake;
 
@@ -168,12 +169,14 @@ namespace Games_CSharp
                         if (whoseTurn == 1)
                         {
                             Console.WriteLine("I win, You lose.");
+                            Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or Score.");
                             L++;
                         }
 
                         else
                         {
                             Console.WriteLine("You win, I lose.");
+                            Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or Score.");
                             W++;
                         }
 
@@ -484,11 +487,13 @@ namespace Games_CSharp
                                     if (whoseTurn == 1)
                                     {
                                         Console.WriteLine("I win, you loose.");
+                                        Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or Score.");
                                         L++;
                                     }
                                     else
                                     {
                                         Console.WriteLine("I loose, you win.");
+                                        Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or Score.");
                                         W++;
                                     }
                                 }
@@ -609,20 +614,22 @@ namespace Games_CSharp
                         else if (pizzaeaten >= 5)
                         {
                             Console.WriteLine("You loose, died from eating too much.");
+                            Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or Score.");
                             L++;
-                            a = 5;
                         }
                         else if (chicken = true & gamenumber == "victory")
                         {
                             Console.WriteLine("You win");
+                            Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or Score.");
                             W++;
                             gameloop = false;
                         }
                         else if (chicken = false & gamenumber == "victory")
                         {
                             Console.WriteLine("YOU LOOSE, try to find the hidden item to win.");
+                            Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or Score.");
                             L++;
-                            a = 5;
+                            gameloop = false;
                         }
                         else if (x == 3 & y == 2 & gamenumber == "teleport")
                         {
@@ -640,6 +647,7 @@ namespace Games_CSharp
                         if (countMistakes >= 20)
                         {
                             Console.WriteLine("YOU LOOSE, took too many actions before winning.");
+                            Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or Score.");
                             L++;
                             gameloop = false;
                         }
@@ -774,7 +782,7 @@ namespace Games_CSharp
                 }
                 else
                 {
-                    Console.WriteLine("Invalid game or mistyped. Please try it again, your choices are Single Pile Nim, Multuple Pile Nim, or Zookkooz.");
+                    Console.WriteLine("Invalid game or mistyped. Please try it again, your choices are Single Pile Nim, Multuple Pile Nim, Zookooz, or Score");
                 }
             }
         }
