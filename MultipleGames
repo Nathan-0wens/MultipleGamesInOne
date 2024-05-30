@@ -1,6 +1,5 @@
-//Date in day/month/year format for newest update: 29/5/2024
+//Date in day/month/year format for newest update: 30/5/2024
 //I suggest you copy the Single Pile Nim, Multiple Pile Nim, or Zookkooz from the text the console wrote at the start that way you won't mistype it.
-using MultipleGames;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -656,12 +655,18 @@ namespace Games_CSharp
                             a = 5;
                         }
                         //Makes you loose if you take too many actions
-                        if (countMistakes >= 20)
+                        if (countMistakes >= 20 & chicken == false)
                         {
                             Console.WriteLine("YOU LOOSE, took too many actions before winning.");
                             Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or Score.");
                             L++;
                             gameloop = false;
+                        }
+                        else if (countMistakes >= 20 & chicken == true)
+                        {
+                         Console.WriteLine("You had the secret item, but never said win so you loose.");
+                         L++;
+                         gameloop = false;
                         }
                         //Room loop so once you move it will say the location and describe it
                         while (a != 0)
