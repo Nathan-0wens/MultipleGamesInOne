@@ -821,7 +821,7 @@ namespace Games_CSharp
                         //puts the text on the screen
                         makeMove();
                     }
-                    internal void writeBook()
+                    public void writeBook()
                     {
                         //lets create five pages  
                         myBook[0] = new Page(); //inside cover
@@ -847,66 +847,48 @@ namespace Games_CSharp
                     {
                         if (currentPage < 101 && currentPage != 25)
                         {
-                            storyText.Text = myBook[currentPage].getDescription();
+                            Console.WriteLine() = myBook[currentPage].getDescription();
                             if (currentPage < 25 && currentPage != 7 && currentPage != 8 && currentPage != 5)
                             {
-                                storyText.Text += Environment.NewLine + "What would you like to do?";
-                                pictureBox1.Image = Image.FromFile("H:\\Volcano.jfif");
+                                Console.WriteLine() += Environment.NewLine + "What would you like to do?";
                             }
                             if (currentPage == 5)
                             {
-                                storyText.Text += Environment.NewLine + "What would you like to do?";
-                                pictureBox1.Image = Image.FromFile("H:\\NightinForest.jpg");
+                                Console.WriteLine() += Environment.NewLine + "What would you like to do?";
                             }
                             if (currentPage == 7)
                             {
-                                storyText.Text += Environment.NewLine + "What would you like to do?";
-                                pictureBox1.Image = Image.FromFile("H:\\EruptingVolcano - Copy.jfif");
+                                Console.WriteLine() += Environment.NewLine + "What would you like to do?";
                             }
                             if (currentPage == 8)
                             {
-                                storyText.Text += Environment.NewLine + "Type in 1 to restart!";
-                                pictureBox1.Image = Image.FromFile("H:\\ForestFire.jfif");
+                                Console.WriteLine() += Environment.NewLine + "Type in 1 to restart!";
                             }
                             if (currentPage > 25 && currentPage != 90 && currentPage != 100 && currentPage != 26)
                             {
-                                storyText.Text += Environment.NewLine + "Type in 1 to restart!";
-                                pictureBox1.Image = Image.FromFile("H:\\Lion.jfif");
+                                Console.WriteLine() += Environment.NewLine + "Type in 1 to restart!";
                             }
                             if (currentPage == 90)
                             {
-                                storyText.Text += Environment.NewLine + "Type in 1 to restart!";
-                                pictureBox1.Image = Image.FromFile("H:\\Forest.jpg");
+                                Console.WriteLine() += Environment.NewLine + "Type in 1 to restart!";
                             }
                             if (currentPage == 100)
                             {
-                                storyText.Text += Environment.NewLine + "What would you like to do?";
-                                pictureBox1.Image = Image.FromFile("H:\\Forest.jpg");
+                                Console.WriteLine() += Environment.NewLine + "What would you like to do?";
                             }
                             if (currentPage == 26)
                             {
-                                storyText.Text += Environment.NewLine + "Type in 1 to restart!";
-                                pictureBox1.Image = Image.FromFile("H:\\NightinForest.jpg");
+                                Console.WriteLine() += Environment.NewLine + "Type in 1 to restart!";
                             }
                         }
 
                         else if (currentPage == 25)
                         {
-                            pictureBox1.Image = Image.FromFile("H:\\AfterEruption.jpg");
-                            storyText.Text = myBook[currentPage].getDescription();
+                            Console.WriteLine() = myBook[currentPage].getDescription();
                         }
                         else
                         {
-                            storyText.Text = myBook[currentPage].getDescription() + Environment.NewLine + "Type in 1 to restart!";
-
-                            if (currentPage > 101)
-                            {
-                                //insert code to change image
-                                //set pictureBox to always be in stretch to fit
-                                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                                pictureBox1.Image = Image.FromFile("H:\\EruptingVolcano - Copy.jfif");
-                            }
-
+                            Console.WriteLine() = myBook[currentPage].getDescription() + Environment.NewLine + "Type in 1 to restart!";
                         }
                     } //end make move
                 }
