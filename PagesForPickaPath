@@ -1,0 +1,36 @@
+namespace MultipleGames
+{
+    public class Page
+    {
+
+        String description = "press 1 to restart and next time read it and follow the directions";
+        int number = 0;
+        int nextPage1 = 0;
+        int nextPage2 = 0;
+
+
+        //this will create a blank page
+        public Page()
+        {
+        }
+
+        //this will create a page with a description and options
+        public Page(int num, String desc, int p1, int p2)
+        {
+            description = desc;
+            number = num;
+            nextPage1 = p1;
+            nextPage2 = p2;
+        }
+
+        public int getNumber()
+        {
+            return number;
+        }
+
+        public String getDescription()
+        {
+            return description;
+        }
+    }
+}
