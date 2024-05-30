@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
 
 namespace Games_CSharp
@@ -805,7 +806,109 @@ namespace Games_CSharp
                 }
                 else if (gamenumber == "PickaPath")
                 {
+                    Page[] myBook = new Page[250];
+                    int currentPage = 1;
+                    //this creates all of the blank pages
+                    for (int i = 0; i < myBook.Length; i++)
+                    {
+                        myBook[i] = new Page();
 
+                        //this runs the write book method
+                        //and fills the pages with text
+                        writeBook();
+
+                        //this runs the makeMove method which
+                        //puts the text on the screen
+                        makeMove();
+                    }
+                    internal void writeBook()
+                    {
+                        //lets create five pages  
+                        myBook[0] = new Page(); //inside cover
+                        myBook[1] = new Page(1, "Welcome to the volcano resort! It is big and scary. \n" +
+                        "Would you like to climb the volcano and see what is in it (page 103), go back to the resort(3), or look around and see what is to see(4)?", 2, 3);
+                        myBook[103] = new Page(103, "You watch as the volcano starts to erupt. Any last words? \n" +
+                        " Say last words (page 101)", 101, 101);
+                        myBook[3] = new Page(3, "You notice a path going into a forest when walking back to the resort. Continue back to the resort (102) or go on the path (25).", 4, 5);
+                        myBook[4] = new Page(4, "After walking around you noticed you could walk around the base of the mountain(6), follow a path into the forest (25), or wander into the forest without following a path(100)", 102, 25);
+                        myBook[6] = new Page(6, "You walk around the base of the mountain then. You can go back to the resort (102) or wander into the forest (100)", 107, 192);
+                        myBook[100] = new Page(100, "You see a sleeping lion in the forest. You can watch the lion sleep (50), walk away slowly and quietly (7), or plank on the lion (90)", 50, 50);
+                        myBook[50] = new Page(50, "The lion wakes up and sees you, then it eats you.", 72, 56);
+                        myBook[7] = new Page(70, "You escaped the lion, but then you hear rumbling and you notice the volcano erupted. Go back and try to plank on the lion(90) or run deeper into the forest(5)", 93, 27);
+                        myBook[90] = new Page(90, "You got eaten by the lion and got yourself a darwin award for your death.", 103, 17);
+                        myBook[102] = new Page(102, "You hear rumbling and molten rock from the volcano shoots out into the sky. One of those rocks hit you and you are now dead.", 190, 190);
+                        myBook[25] = new Page(25, "You notice the volcano erupts, thankfully you are far enough away that you could escape. You live today with everything that you have done destroyed even your home and family, but you are still alive.", 197, 197);
+                        myBook[101] = new Page(101, "The volcano burns you to ash.", 200, 200);
+                        myBook[26] = new Page(13, "You died in your sleep due to the lion", 14, 51);
+                        myBook[8] = new Page(8, "Due to lack of sleep and dehydration you thought that the forest fire was your home and so you ran into the fire never to be seen again.", 17, 63);
+                        myBook[5] = new Page(97, "You ran into the woods and now it is night, but you are very thirsty and hungry. Sleep without a shelter (26) or continue walking without sleep in order to find food, water, and shelter (8)", 83, 13);
+                    } //end write book
+                    public void makeMove()
+                    {
+                        if (currentPage < 101 && currentPage != 25)
+                        {
+                            storyText.Text = myBook[currentPage].getDescription();
+                            if (currentPage < 25 && currentPage != 7 && currentPage != 8 && currentPage != 5)
+                            {
+                                storyText.Text += Environment.NewLine + "What would you like to do?";
+                                pictureBox1.Image = Image.FromFile("H:\\Volcano.jfif");
+                            }
+                            if (currentPage == 5)
+                            {
+                                storyText.Text += Environment.NewLine + "What would you like to do?";
+                                pictureBox1.Image = Image.FromFile("H:\\NightinForest.jpg");
+                            }
+                            if (currentPage == 7)
+                            {
+                                storyText.Text += Environment.NewLine + "What would you like to do?";
+                                pictureBox1.Image = Image.FromFile("H:\\EruptingVolcano - Copy.jfif");
+                            }
+                            if (currentPage == 8)
+                            {
+                                storyText.Text += Environment.NewLine + "Type in 1 to restart!";
+                                pictureBox1.Image = Image.FromFile("H:\\ForestFire.jfif");
+                            }
+                            if (currentPage > 25 && currentPage != 90 && currentPage != 100 && currentPage != 26)
+                            {
+                                storyText.Text += Environment.NewLine + "Type in 1 to restart!";
+                                pictureBox1.Image = Image.FromFile("H:\\Lion.jfif");
+                            }
+                            if (currentPage == 90)
+                            {
+                                storyText.Text += Environment.NewLine + "Type in 1 to restart!";
+                                pictureBox1.Image = Image.FromFile("H:\\Forest.jpg");
+                            }
+                            if (currentPage == 100)
+                            {
+                                storyText.Text += Environment.NewLine + "What would you like to do?";
+                                pictureBox1.Image = Image.FromFile("H:\\Forest.jpg");
+                            }
+                            if (currentPage == 26)
+                            {
+                                storyText.Text += Environment.NewLine + "Type in 1 to restart!";
+                                pictureBox1.Image = Image.FromFile("H:\\NightinForest.jpg");
+                            }
+                        }
+
+                        else if (currentPage == 25)
+                        {
+                            pictureBox1.Image = Image.FromFile("H:\\AfterEruption.jpg");
+                            storyText.Text = myBook[currentPage].getDescription();
+                        }
+                        else
+                        {
+                            storyText.Text = myBook[currentPage].getDescription() + Environment.NewLine + "Type in 1 to restart!";
+
+                            if (currentPage > 101)
+                            {
+                                //insert code to change image
+                                //set pictureBox to always be in stretch to fit
+                                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                                pictureBox1.Image = Image.FromFile("H:\\EruptingVolcano - Copy.jfif");
+                            }
+
+                        }
+                    } //end make move
                 }
                 //Incase of a mistype or invalid game
                 else
