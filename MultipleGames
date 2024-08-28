@@ -895,11 +895,11 @@ namespace Games_CSharp
                             {
                                 Console.WriteLine(myBook[currentPage].getDescription());
                             }
-                            currentPage = Console.ReadLine();
                             else
                             {
                                 Console.WriteLine(myBook[currentPage].getDescription() + Environment.NewLine + "Type in 1 to restart!");
                             }
+                            currentPage = Int32.Parse(Console.ReadLine());
                         } //end make move
                     }
                 }
