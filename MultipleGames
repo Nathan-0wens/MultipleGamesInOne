@@ -1,5 +1,4 @@
 //Date in day/month/year format for newest update: 28/08/2024
-//I suggest you copy the Single Pile Nim, Multiple Pile Nim, or Zookkooz from the text the console wrote at the start that way you won't mistype it.
 using MultipleGames;
 using System;
 using System.Collections.Generic;
@@ -910,5 +909,109 @@ namespace Games_CSharp
                 }
             }
         }
+    }
+}
+
+
+
+
+
+import java.util.*; //ALL of them
+import java.util.Scanner; //Specifically just the scanner
+import java.util.Random; //Specifically just the random
+/**
+ * Nathan Owens
+ * 8/28/2024
+ */
+public class NumberGuess
+{
+    public static void main (String[] args)
+    {
+        boolean w = true;
+        int x = 10;
+        int y = 0;
+        int z = 0;
+        Random generator = new Random();
+        Scanner userInput = new Scanner (System.in);
+        int guess;
+        
+        System.out.println("Would you like to play a high-low number guessing game? yes or no. Type the number 9999 to quit.");
+        
+        if(userInput.nextLine().equalsIgnoreCase("y") || userInput.nextLine().equalsIgnoreCase("yes"))
+        {
+            int number = generator.nextInt(100) + 1;
+            while(x > 0)
+            {
+                    w = true;
+                    while (w = true)
+                    {
+                    System.out.println("Guess a number between 1-100");
+                    try
+                    {
+                        guess = userInput.nextInt();
+                        if (guess == number)
+                        {
+                            System.out.println("You win! The number was: " + number);
+                            y++;
+                            x--;
+                            break;
+                            }
+                            else if (guess == 9999)
+                            {
+                            x--;
+                            z++;
+                            w = false;
+                            break;
+                            }
+                            else if (guess < 1 || guess > 100 && guess != 9999)
+                            {
+                            x--;
+                            System.out.println("Out of range");
+                            }
+                            else if ( guess > number)
+                            {
+                            x--;
+                            System.out.println("Too high");
+                            }
+                            else if (guess < number)
+                            {
+                            System.out.println("Too low"); 
+                            x--;
+                            }
+                            if(x < 0)
+                            {
+                                w = false;
+                            }
+                        }
+                        catch(Exception SomethingUnexpected)
+                        {
+                                    x = -100;
+                                    w = false;
+                        }
+                    }
+                if (y > 0 && x >= 0)
+                {
+                    System.out.println("Would you like to play again? Yes or No");
+                        if(userInput.nextLine().equalsIgnoreCase("yes") ||userInput.nextLine().equalsIgnoreCase("y"))
+                        {
+                            x = 10;
+                        }
+                }
+                else if (x < 0)
+                {
+                    System.out.println("Too many guess, you loose");
+                    System.out.println("Would you like to play again? Yes or No");
+                        if(userInput.nextLine().equalsIgnoreCase("yes") ||userInput.nextLine().equalsIgnoreCase("y"))
+                        {
+                            x = 10;
+                        }
+                        if(userInput.nextLine().equalsIgnoreCase("no") ||userInput.nextLine().equalsIgnoreCase("n"))
+                        {
+                            x = -100;
+                        }
+                }
+            }
+        }
+
     }
 }
