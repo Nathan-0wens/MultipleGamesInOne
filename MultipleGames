@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
+import java.util.*;
+import java.util.Scanner;
+import java.util.Random;
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
 
 namespace Games_CSharp
@@ -69,6 +72,92 @@ namespace Games_CSharp
                 {
                     Console.WriteLine("Type in Score to see your score.");
                     Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Zookkooz, please type in the \n full name correctly.");
+                }
+                else if (gamenumber == "Number Guessing Game")
+                {
+                    boolean w = true;
+        int x = 10;
+        int y = 0;
+        int z = 0;
+        Random generator = new Random();
+        Scanner userInput = new Scanner (System.in);
+        int guess;
+        
+        System.out.println("Would you like to play a high-low number guessing game? yes or no. Type the number 9999 to quit.");
+        
+        if(userInput.nextLine().equalsIgnoreCase("y") || userInput.nextLine().equalsIgnoreCase("yes"))
+        {
+            int number = generator.nextInt(100) + 1;
+            while(x > 0)
+            {
+                    w = true;
+                    while (w = true)
+                    {
+                    System.out.println("Guess a number between 1-100");
+                    try
+                    {
+                        guess = userInput.nextInt();
+                        if (guess == number)
+                        {
+                            System.out.println("You win! The number was: " + number);
+                            y++;
+                            x--;
+                            break;
+                            }
+                            else if (guess == 9999)
+                            {
+                            x--;
+                            z++;
+                            w = false;
+                            break;
+                            }
+                            else if (guess < 1 || guess > 100 && guess != 9999)
+                            {
+                            x--;
+                            System.out.println("Out of range");
+                            }
+                            else if ( guess > number)
+                            {
+                            x--;
+                            System.out.println("Too high");
+                            }
+                            else if (guess < number)
+                            {
+                            System.out.println("Too low"); 
+                            x--;
+                            }
+                            if(x < 0)
+                            {
+                                w = false;
+                            }
+                        }
+                        catch(Exception SomethingUnexpected)
+                        {
+                                    x = -100;
+                                    w = false;
+                        }
+                    }
+                if (y > 0 && x >= 0)
+                {
+                    System.out.println("Would you like to play again? Yes or No");
+                        if(userInput.nextLine().equalsIgnoreCase("yes") ||userInput.nextLine().equalsIgnoreCase("y"))
+                        {
+                            x = 10;
+                        }
+                }
+                else if (x < 0)
+                {
+                    System.out.println("Too many guess, you loose");
+                    System.out.println("Would you like to play again? Yes or No");
+                        if(userInput.nextLine().equalsIgnoreCase("yes") ||userInput.nextLine().equalsIgnoreCase("y"))
+                        {
+                            x = 10;
+                        }
+                        if(userInput.nextLine().equalsIgnoreCase("no") ||userInput.nextLine().equalsIgnoreCase("n"))
+                        {
+                            x = -100;
+                        }
+                }
                 }
                 else if (gamenumber == "Single Pile Nim")
                 {
