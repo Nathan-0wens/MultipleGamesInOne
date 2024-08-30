@@ -949,6 +949,13 @@ public class NumberGuess
                     try
                     {
                         guess = userInput.nextInt();
+                    }
+                    catch(Exception SomethingUnexpected)
+                    {
+                        x = -100;
+                        w = false;
+                        System.out.println("You failed to type in an integer.");
+                    }
                         if (guess == number)
                         {
                             System.out.println("You win! The number was: " + number);
@@ -982,12 +989,6 @@ public class NumberGuess
                             {
                                 w = false;
                             }
-                        }
-                        catch(Exception SomethingUnexpected)
-                        {
-                                    x = -100;
-                                    w = false;
-                        }
                     }
                 if (y > 0 && x >= 0)
                 {
