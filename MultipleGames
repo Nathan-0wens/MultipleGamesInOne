@@ -71,10 +71,7 @@ namespace Games_CSharp
                     Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Zookkooz, please type in the \n full name correctly.");
                 }
                 else if (gamenumber == "Number Guessing Game")
-                {
-        
-        Console.WriteLine("Would you like to play a high-low number guessing game? yes or no. Type the number 9999 to quit.");
-        
+                {        
         if(userInput.nextLine().equalsIgnoreCase("y") || userInput.nextLine().equalsIgnoreCase("yes"))
         {
             boolean w = true;
