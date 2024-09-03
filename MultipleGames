@@ -1,4 +1,4 @@
-//Date in day/month/year format for newest update: 30/08/2024
+//Date in day/month/year format for newest update: 3/09/2024
 using MultipleGames;
 using System;
 using System.Collections.Generic;
@@ -6,9 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
-import java.util.*;
-import java.util.Scanner;
-import java.util.Random;
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
 
 namespace Games_CSharp
@@ -75,90 +72,89 @@ namespace Games_CSharp
                 }
                 else if (gamenumber == "Number Guessing Game")
                 {
-                    boolean w = true;
-        int x = 10;
-        int y = 0;
-        int z = 0;
-        Random generator = new Random();
-        Scanner userInput = new Scanner (System.in);
-        int guess;
         
-        System.out.println("Would you like to play a high-low number guessing game? yes or no. Type the number 9999 to quit.");
+        Console.WriteLine("Would you like to play a high-low number guessing game? yes or no. Type the number 9999 to quit.");
         
         if(userInput.nextLine().equalsIgnoreCase("y") || userInput.nextLine().equalsIgnoreCase("yes"))
         {
-            int number = generator.nextInt(100) + 1;
+            boolean w = true;
+            int x = 10;
+            int y = 0;
+            int z = 0;
+            Random ran = new();
+            int guess;
+            int number = ran.nextInt(0, 100);
             while(x > 0)
             {
-                    w = true;
-                    while (w = true)
-                    {
-                    System.out.println("Guess a number between 1-100");
+                w = true;
+                while (w = true)
+                {
+                    Console.WriteLine("Guess an integer between 1-100");
                     try
                     {
-                        guess = userInput.nextInt();
+                        guess = Console.ReadLine();
                         if (guess == number)
                         {
-                            System.out.println("You win! The number was: " + number);
+                            Console.WriteLine("You win! The number was: " + number);
                             y++;
                             x--;
                             break;
-                            }
-                            else if (guess == 9999)
-                            {
+                        }
+                        else if (guess == 9999)
+                        {
                             x--;
                             z++;
                             w = false;
                             break;
-                            }
-                            else if (guess < 1 || guess > 100 && guess != 9999)
-                            {
-                            x--;
-                            System.out.println("Out of range");
-                            }
-                            else if ( guess > number)
-                            {
-                            x--;
-                            System.out.println("Too high");
-                            }
-                            else if (guess < number)
-                            {
-                            System.out.println("Too low"); 
-                            x--;
-                            }
-                            if(x < 0)
-                            {
-                                w = false;
-                            }
                         }
-                        catch(Exception SomethingUnexpected)
+                        else if (guess < 1 || guess > 100 && guess != 9999)
                         {
-                                    x = -100;
-                                    w = false;
+                            x--;
+                            Console.WriteLine("Out of range");
+                        }
+                        else if ( guess > number)
+                        {
+                            x--;
+                            Console.WriteLine("Too high");
+                        }
+                        else if (guess < number)
+                        {
+                            Console.WriteLine("Too low"); 
+                            x--;
+                        }
+                        if(x < 0)
+                        {
+                            w = false;
                         }
                     }
+                    catch(Exception SomethingUnexpected)
+                    {
+                        x = -100;
+                        w = false;
+                    }
+                }
                 if (y > 0 && x >= 0)
                 {
-                    System.out.println("Would you like to play again? Yes or No");
-                        if(userInput.nextLine().equalsIgnoreCase("yes") ||userInput.nextLine().equalsIgnoreCase("y"))
-                        {
-                            x = 10;
-                        }
+                    Console.WriteLine("Would you like to play again? Yes or No");
+                    if(userInput.nextLine().equalsIgnoreCase("yes") ||userInput.nextLine().equalsIgnoreCase("y"))
+                    {
+                        x = 10;
+                    }
                 }
                 else if (x < 0)
                 {
-                    System.out.println("Too many guess, you loose");
-                    System.out.println("Would you like to play again? Yes or No");
-                        if(userInput.nextLine().equalsIgnoreCase("yes") ||userInput.nextLine().equalsIgnoreCase("y"))
-                        {
-                            x = 10;
-                        }
-                        if(userInput.nextLine().equalsIgnoreCase("no") ||userInput.nextLine().equalsIgnoreCase("n"))
-                        {
-                            x = -100;
-                        }
+                    Console.WriteLine("Too many guess, you loose");
+                    Console.WriteLine("Would you like to play again? Yes or No");
+                    if(userInput.nextLine().equalsIgnoreCase("yes") ||userInput.nextLine().equalsIgnoreCase("y"))
+                    {
+                        x = 10;
+                    }
+                    if(userInput.nextLine().equalsIgnoreCase("no") ||userInput.nextLine().equalsIgnoreCase("n"))
+                    {
+                        x = -100;
+                    }
                 }
-                }
+            }
                 else if (gamenumber == "Single Pile Nim")
                 {
                     //Piles and taking from them
@@ -938,6 +934,7 @@ namespace Games_CSharp
                         } //end write book
                         void makeMove()
                         {
+                            int currentPage = Console.ReadLine();
                             if (currentPage < 101 && currentPage != 25)
                             {
                                 Console.WriteLine(myBook[currentPage].getDescription());
@@ -983,6 +980,7 @@ namespace Games_CSharp
                             {
                                 Console.WriteLine(myBook[currentPage].getDescription());
                             }
+                            currentPage = Console.ReadLine();
                             else
                             {
                                 Console.WriteLine(myBook[currentPage].getDescription() + Environment.NewLine + "Type in 1 to restart!");
@@ -1000,4 +998,3 @@ namespace Games_CSharp
         }
     }
 }
-
