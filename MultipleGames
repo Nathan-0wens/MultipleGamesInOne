@@ -65,7 +65,7 @@ namespace Games_CSharp
             while (true)
             {
                 gamenumber = Console.ReadLine();
-                if (gamenumber == "help" || gamenumber == "Help" || gamenumber == "HELP")
+                if (gamenumber == "help" || gamenumber == "Help" || gamenumber == "HELP" || gamenumber == "h")
                 {
                     Console.WriteLine("Type in Score to see your score.");
                     Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Zookkooz, please type in the \n full name correctly.");
@@ -131,7 +131,7 @@ namespace Games_CSharp
                         if (y > 0 && x >= 0)
                         {
                             Console.WriteLine("Would you like to play again? Yes or No");
-                            if(userInput.nextLine().equalsIgnoreCase("yes") ||userInput.nextLine().equalsIgnoreCase("y"))
+                            if(Console.ReadLine.equalsIgnoreCase("yes") || Console.ReadLine.equalsIgnoreCase("y"))
                             {
                                 x = 10;
                             }
@@ -140,11 +140,11 @@ namespace Games_CSharp
                         {
                             Console.WriteLine("Too many guess, you loose");
                             Console.WriteLine("Would you like to play again? Yes or No");
-                            if(userInput.nextLine().equalsIgnoreCase("yes") ||userInput.nextLine().equalsIgnoreCase("y"))
+                            if(Console.ReadLine.equalsIgnoreCase("yes") || Console.ReadLine.equalsIgnoreCase("y"))
                             {
                                 x = 10;
                             }
-                            if(userInput.nextLine().equalsIgnoreCase("no") ||userInput.nextLine().equalsIgnoreCase("n"))
+                            if(Console.ReadLine.equalsIgnoreCase("no") || Console.ReadLine.equalsIgnoreCase("n"))
                             {
                                 x = -100;
                             }
