@@ -68,7 +68,7 @@ namespace Games_CSharp
                 if (gamenumber == "help" || gamenumber == "Help" || gamenumber == "HELP" || gamenumber == "h")
                 {
                     Console.WriteLine("Type in Score to see your score.");
-                    Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, or Zookkooz, please type in the \n full name correctly.");
+                    Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                 }
                 else if (gamenumber == "Number Guessing Game")
                     {        
@@ -139,11 +139,13 @@ namespace Games_CSharp
                             else if(string.Equals(check, "no", StringComparison.OrdinalIgnoreCase) || string.Equals(check, "n", StringComparison.OrdinalIgnoreCase))
                             {
                                 xx = -100;
+                                Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                             }
                             else
                             {
                                 Console.WriteLine("Because you didn't say yes or no you will be returned back to the games again.");
                                 xx = -100;
+                                Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                             }
                         }
                         else if (xx < 0)
@@ -158,11 +160,13 @@ namespace Games_CSharp
                             else if(string.Equals(check, "no", StringComparison.OrdinalIgnoreCase) || string.Equals(check, "n", StringComparison.OrdinalIgnoreCase))
                             {
                                 xx = -100;
+                                Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                             }
                             else
                             {
                                 Console.WriteLine("Because you didn't say yes or no you will be returned back to the games again.");
                                 xx = -100;
+                                Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                             }
                         }
                     }
@@ -269,14 +273,14 @@ namespace Games_CSharp
                         if (whoseTurn == 1)
                         {
                             Console.WriteLine("I win, You lose.");
-                            Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or see your Score.");
+                            Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                             L++;
                         }
 
                         else
                         {
                             Console.WriteLine("You win, I lose.");
-                            Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or see your Score.");
+                            Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                             W++;
                         }
 
@@ -596,13 +600,13 @@ namespace Games_CSharp
                                     if (whoseTurn == 1)
                                     {
                                         Console.WriteLine("I win, you loose.");
-                                        Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or see your Score.");
+                                        Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                                         L++;
                                     }
                                     else
                                     {
                                         Console.WriteLine("I loose, you win.");
-                                        Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or see your Score.");
+                                        Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                                         W++;
                                     }
                                 }
@@ -725,20 +729,20 @@ namespace Games_CSharp
                         else if (pizzaeaten >= 5)
                         {
                             Console.WriteLine("You loose, died from eating too much.");
-                            Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or see your Score.");
+                            Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                             L++;
                         }
                         else if (chicken = true & gamenumber == "victory")
                         {
                             Console.WriteLine("You win");
-                            Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or see your Score.");
+                            Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                             W++;
                             gameloop = false;
                         }
                         else if (chicken = false & gamenumber == "victory")
                         {
                             Console.WriteLine("YOU LOOSE, try to find the hidden item to win.");
-                            Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or see your Score.");
+                            Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                             L++;
                             gameloop = false;
                         }
@@ -759,13 +763,14 @@ namespace Games_CSharp
                         if (countMistakes >= 20 & chicken == false)
                         {
                             Console.WriteLine("YOU LOOSE, took too many actions before winning.");
-                            Console.WriteLine("Please pick a new game, Zookkooz, Single Pile Nim, Multiple Pile Nim, or see your Score.");
+                            Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                             L++;
                             gameloop = false;
                         }
                         else if (countMistakes >= 20 & chicken == true)
                         {
                             Console.WriteLine("You had the secret item, but never said victory so you loose.");
+                            Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                             L++;
                             gameloop = false;
                         }
@@ -901,7 +906,7 @@ namespace Games_CSharp
                 {
                     Console.WriteLine("Your win rate is {0}", W);
                     Console.WriteLine("Your loss rate is {0}", L);
-                    Console.WriteLine("Type in another game. Your options are Single Pile Nim, Multuple Pile Nim, or Zookkooz.");
+                    Console.WriteLine("Which game do you want to play? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the \n full name correctly.");
                 }
                 else if (gamenumber == "PickaPath")
                 {
@@ -1003,7 +1008,7 @@ namespace Games_CSharp
                 //Incase of a mistype or invalid game
                 else
                 {
-                    Console.WriteLine("Invalid game or mistyped. Please try it again, your choices are Single Pile Nim, Multuple Pile Nim, Zookooz, or see your Score");
+                    Console.WriteLine("Which game do you want to play or say Score to see your score? Your options are Single Pile Nim, Multiple Pile Nim, Number Guessing Game, Pick A Path, or Zookkooz, please type in the full name correctly.");
                 }
             }
         }
