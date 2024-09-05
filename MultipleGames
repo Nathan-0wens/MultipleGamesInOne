@@ -73,13 +73,13 @@ namespace Games_CSharp
                 else if (gamenumber == "Number Guessing Game")
                     {        
                     bool w = true;
-                    int x = 10;
-                    int y = 0;
-                    int z = 0;
+                    int xx = 10;
+                    int yy = 0;
+                    int zz = 0;
                     Random ran = new();
                     int guess;
-                    int number = ran.nextInt(0, 100);
-                    while(x > 0)
+                    int number = ran.Next(0, 100);
+                    while(xx > 0)
                     {
                         w = true;
                         while (w = true)
@@ -87,35 +87,35 @@ namespace Games_CSharp
                             Console.WriteLine("Guess an integer between 1-100");
                             try
                             {
-                                guess = Console.ReadLine();
+                                guess = Int32.Parse(Console.ReadLine());
                                 if (guess == number)
                                 {
                                     Console.WriteLine("You win! The number was: " + number);
-                                    y++;
-                                    x--;
+                                    yy++;
+                                    xx--;
                                     break;
                                 }
                                 else if (guess == 9999)
                                 {
-                                    x--;
-                                    z++;
+                                    xx--;
+                                    zz++;
                                     w = false;
                                     break;
                                 }
                                 else if (guess < 1 || guess > 100 && guess != 9999)
                                 {
-                                    x--;
+                                    xx--;
                                     Console.WriteLine("Out of range");
                                 }
                                 else if ( guess > number)
                                 {
-                                    x--;
+                                    xx--;
                                     Console.WriteLine("Too high");
                                 }
                                 else if (guess < number)
                                 {
                                     Console.WriteLine("Too low"); 
-                                    x--;
+                                    xx--;
                                 }
                                 if(x < 0)
                                 {
@@ -124,29 +124,45 @@ namespace Games_CSharp
                             }
                             catch(Exception SomethingUnexpected)
                             {
-                                x = -100;
+                                xx = -100;
                                 w = false;
                             }
                         }
-                        if (y > 0 && x >= 0)
+                        if (yy > 0 && xx >= 0)
                         {
                             Console.WriteLine("Would you like to play again? Yes or No");
-                            if(Console.ReadLine.equalsIgnoreCase("yes") || Console.ReadLine.equalsIgnoreCase("y"))
+                            string check = Console.ReadLine();
+                            if(string.Equals(check, "yes", StringComparison.OrdinalIgnoreCase) || string.Equals(check, "y", StringComparison.OrdinalIgnoreCase))
                             {
-                                x = 10;
+                                xx = 10;
+                            }
+                            else if(string.Equals(check, "no", StringComparison.OrdinalIgnoreCase) || string.Equals(check, "n", StringComparison.OrdinalIgnoreCase))
+                            {
+                                xx = -100;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Because you didn't say yes or no you will be returned back to the games again.");
+                                xx = -100;
                             }
                         }
-                        else if (x < 0)
+                        else if (xx < 0)
                         {
                             Console.WriteLine("Too many guess, you loose");
                             Console.WriteLine("Would you like to play again? Yes or No");
-                            if(Console.ReadLine.equalsIgnoreCase("yes") || Console.ReadLine.equalsIgnoreCase("y"))
+                            string check = Console.ReadLine();
+                            if(string.Equals(check, "yes", StringComparison.OrdinalIgnoreCase) || string.Equals(check, "y", StringComparison.OrdinalIgnoreCase))
                             {
-                                x = 10;
+                                xx = 10;
                             }
-                            if(Console.ReadLine.equalsIgnoreCase("no") || Console.ReadLine.equalsIgnoreCase("n"))
+                            else if(string.Equals(check, "no", StringComparison.OrdinalIgnoreCase) || string.Equals(check, "n", StringComparison.OrdinalIgnoreCase))
                             {
-                                x = -100;
+                                xx = -100;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Because you didn't say yes or no you will be returned back to the games again.");
+                                xx = -100;
                             }
                         }
                     }
@@ -930,7 +946,7 @@ namespace Games_CSharp
                         } //end write book
                         void makeMove()
                         {
-                            int currentPage = Console.ReadLine();
+                            int currentPage = Int32.Parse(Console.ReadLine());
                             if (currentPage < 101 && currentPage != 25)
                             {
                                 Console.WriteLine(myBook[currentPage].getDescription());
@@ -976,7 +992,6 @@ namespace Games_CSharp
                             {
                                 Console.WriteLine(myBook[currentPage].getDescription());
                             }
-                            currentPage = Console.ReadLine();
                             else
                             {
                                 Console.WriteLine(myBook[currentPage].getDescription() + Environment.NewLine + "Type in 1 to restart!");
