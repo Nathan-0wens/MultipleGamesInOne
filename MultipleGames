@@ -1,6 +1,6 @@
-//Date in day/month/year format for newest update: 10/09/2024
-//create a tic-tac-toe game
-//create a connect 4 game
+//Date in day/month/year format for newest update: 13/09/2024
+//create a tic-tac-toe like game
+//create a connect 4 like game
 using System;
 using System.Collections.Generic;
 using System.Linq;
