@@ -115,12 +115,12 @@ static void DisplayBoard ( char[,] board )
 	}
 
 }
-static int CheckFour ( char[,] board, playerInfo activePlayer )
+static int CheckFour ( char[,] board, playerInfo currentPlayer )
 {
 	char XO;
 	int win;
 	
-	XO = activePlayer.playerID;
+	XO = currentPlayer.playerID;
 	win = 0;
 
 	for( int i = 8; i >= 1; --i )
@@ -176,7 +176,7 @@ static int CheckFour ( char[,] board, playerInfo activePlayer )
 return win;
 }
 
-static int FullBoard( char[,] board )
+static int fullBoard( char[,] board )
 {
 	int full;
 	full = 0;
@@ -191,7 +191,7 @@ return full;
 
 static void PlayerWin ( playerInfo activePlayer )
 {
-	Console.WriteLine( activePlayer.playerName + " Connected Four, You Win!" );
+	Console.WriteLine( currentPlayer.playerName + " Connected Four, You Win!" );
 }
 
 static int restart ( char[,] board )
@@ -213,3 +213,4 @@ static int restart ( char[,] board )
 	else
 		Console.WriteLine("Goodbye!");
 return restart;
+}
