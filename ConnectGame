@@ -9,5 +9,45 @@ public class Program
   playerInfo playerOne = new playerInfo();
   playerInfo playerTwo = new playerInfo();
   char[,] board = new char[9, 10];
-int drop, win, full, again;  
+  int drop, win, full, again; 
+
+  Console.WriteLine("Player One please enter your name: ");
+  playerOne.playerID = 'x';
+  Console.WriteLine("Player Two please enter your name: ");
+  playerTwo.playerID = 'y';
+
+  full = 0;
+  win = 0;
+  again = 0;
+  DisplayBoard(board);
+  do
+  {
+    drop = PlayerDrop(board, playerOne);
+    CheckBelow(board, playerOne, playerTwo);
+    DisplayBoard(board);
+    win = checkFour(board, playerOne);
+    if(win == 1)
+    {
+      PlayerWin(playerOne);
+      again = restart(board);
+      if(again == 2)
+      {
+        break;
+      }
+    }
+
+    drop = PlayerDrop(board, playerTwo);
+    CheckBelow(board, playerTwo, playerOne);
+    DisplayBoard(board);
+    win = checkFour(board, playerTwo);
+    if(win == 2)
+    {
+      PlayerWin(playerTwo);
+      again = restart(board);
+      if(again == 2)
+      {
+        break;
+      }
+    }
+  }
 }
