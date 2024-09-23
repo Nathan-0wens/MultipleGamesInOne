@@ -6,7 +6,8 @@ public struct playerInfo
 
 public class Program
 {
-  static void main(string[] args)
-  {
-  }
+  playerInfo playerOne = new playerInfo();
+  playerInfo playerTwo = new playerInfo();
+  char[,] board = new char[9, 10];
+int drop, win, full, again;  
 }
