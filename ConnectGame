@@ -1,0 +1,12 @@
+public struct playerInfo
+{
+  public String playerName;
+  public char playerID;
+};
+
+public class Program
+{
+  static void main(string[] args)
+  {
+  }
+}
