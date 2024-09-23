@@ -1006,6 +1006,10 @@ namespace Games_CSharp
                         } //end make move
                     }
                 }
+                else if (gamenumber == "ConnectGame")
+                {
+                    ConnectGame();
+                }
                 //Incase of a mistype or invalid game
                 else
                 {
