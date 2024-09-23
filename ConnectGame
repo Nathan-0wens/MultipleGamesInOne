@@ -60,7 +60,7 @@ public class ConnectGame
   }
   while(again != 2);
 }
-static int PlayerDrop9char[,] board, playerInfo currentPlayer)
+static int PlayerDrop(char[,] board, playerInfo currentPlayer)
 {
   int drop;
   Console.WriteLine(currentPlayer.playerName + "'s turn");
@@ -98,17 +98,17 @@ static void CheckBelow(char[,] board, playerInfo currentPlayer, int drop)
 
 static void DisplayBoard ( char[,] board )
 {
-	int rows = 6, columns = 7, i, ix;
+	int rows = 6, columns = 7, i, j;
 	
 	for(i = 1; i <= rows; i++)
 	{
 		Console.Write("|");
-		for(ix = 1; ix <= columns; ix++)
+		for(j = 1; j <= columns; j++)
 		{
-			if(board[i , ix] != 'X' && board[i , ix] != 'y')
-				board[i , ix] = '*';
+			if(board[i , j] != 'X' && board[i , j] != 'y')
+				board[i , j] = '*';
 
-			Console.Write( board[i , ix] );
+			Console.Write( board[i ,j] );
 			
 		}
 
@@ -127,46 +127,46 @@ static int CheckFour ( char[,] board, playerInfo currentPlayer )
 	for( int i = 8; i >= 1; --i )
 	{
 		
-		for( int ix = 9; ix >= 1; --ix )
+		for( int j = 9; j >= 1; --j )
 		{
 			
-			if( board[i , ix] == XO     &&
-				board[i-1 , ix-1] == XO &&
-				board[i-2 , ix-2] == XO &&
-				board[i-3 , ix-3] == XO )
+			if( board[i , j] == XO     &&
+				board[i-1 , j-1] == XO &&
+				board[i-2 , j-2] == XO &&
+				board[i-3 , j-3] == XO )
 			{
 				win = 1;
 			}
 			
 
-			if( board[i , ix] == XO   &&
-				board[i , ix-1] == XO &&
-				board[i , ix-2] == XO &&
-				board[i , ix-3] == XO )
+			if( board[i , j] == XO   &&
+				board[i , j-1] == XO &&
+				board[i , j-2] == XO &&
+				board[i , j-3] == XO )
 			{
 				win = 1;
 			}
 					
-			if( board[i , ix] == XO   &&
-				board[i-1 , ix] == XO &&
-				board[i-2 , ix] == XO &&
-				board[i-3 , ix] == XO )
+			if( board[i , j] == XO   &&
+				board[i-1 , j] == XO &&
+				board[i-2 , j] == XO &&
+				board[i-3 , j] == XO )
 			{	
 				win = 1;
 			}
 					
-			if( board[i , ix] == XO     &&
-				board[i-1 , ix+1] == XO &&
-				board[i-2 , ix+2] == XO &&
-				board[i-3 , ix+3] == XO )
+			if( board[i , j] == XO     &&
+				board[i-1 , j+1] == XO &&
+				board[i-2 , j+2] == XO &&
+				board[i-3 , j+3] == XO )
 			{
 				win = 1;
 			}
 						
-			if ( board[i , ix] == XO   &&
-				 board[i , ix+1] == XO &&
-				 board[i , ix+2] == XO &&
-				 board[i , ix+3] == XO )
+			if ( board[i , j] == XO   &&
+				 board[i , j+1] == XO &&
+				 board[i , j+2] == XO &&
+				 board[i , j+3] == XO )
 			{
 				win = 1;
 			}
@@ -205,9 +205,9 @@ static int restart ( char[,] board )
 	{
 		for(int i = 1; i <= 6; i++)
 		{
-			for(int ix = 1; ix <= 7; ix++)
+			for(int j = 1; j <= 7; j++)
 			{
-				board[i , ix] = '*';
+				board[i , j] = '*';
 			}
 		}
 	}
