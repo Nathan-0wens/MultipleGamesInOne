@@ -5,7 +5,7 @@ public struct playerInfo
   public char playerID;
 };
 
-public class Program
+public class ConnectGame
 {
   playerInfo playerOne = new playerInfo();
   playerInfo playerTwo = new playerInfo();
