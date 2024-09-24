@@ -1,11 +1,10 @@
-//Need to add in an AI to play against someone
-public struct playerInfo
+    public struct playerInfo
 {
   public String playerName;
   public char playerID;
 };
 
-public class ConnectGame
+void ConnectGame()
 {
   playerInfo playerOne = new playerInfo();
   playerInfo playerTwo = new playerInfo();
