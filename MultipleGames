@@ -1,4 +1,4 @@
-//Date in day/month/year format for newest update: 13/09/2024
+//Date in day/month/year format for newest update: 11/11/2024
 //create a tic-tac-toe like game
 //create a connect 4 like game
 using System;
@@ -18,24 +18,23 @@ namespace Games_CSharp
         public static void Main(string[] Games)
         {
             // Rooms for Zookkooz
-            Room startingPoint = new("Entry Way", "You realize you are stuck in a game and need something and then to say victory to win. Looking around you see that you \n are in a lovely marble enterance to the Library");
-            Room r1 = new("Field", "Lovely Place to Be");
-            Room r2 = new("Elm Stree", "Its Scary");
-            Room r3 = new("House", "It is tiny and white and there is an open window so you can enter the house");
-            Room r4 = new("School", "There are a lot of textbooks and a window that you can't get through");
-            Room r5 = new("Darkness???", "You could swear that it was still daytime, yet there is not a speck of light.");
-            Room r6 = new("Chicken???", "In a massive open area you see a random chicken");
-            Room r7 = new("Treehouse", "There is no way to enter it, but it looks neat.");
-            Room r8 = new("Beach", "It is very sandy, and the water looks undrinkable");
-            Room r9 = new("Restaurant", "No one is here, yet you can see tons of tasty free pizza. Though eating too much pizza could kill you, you are still very hungry.");
-            Room r10 = new("Inside the house", "You can see nothing except for the window you entered through.");
-            Room r11 = new("Another School???", "There is one window that you can't get through and tons of school supplies inside.");
-            Room r12 = new("Light?", "There is so much light it is blinding and you can't se anything.");
-            Room r13 = new("Cave", "You see a cave north of your position, but the ground leading up that way is impassable");
-            Room r14 = new("Massive Tree", "The tree is huge, and it looks like it could walk but it is sleeping, luckily the gound is impassable North so you are safe.");
-            Room r15 = new("Bridge to nowhere", "There is just a random bridge here that goes into the air and ends in the air, so you won't get across anything just most likely mess up and die. Also, you can't go around it due to the impassable terrain.");
-            Room r16 = new("Teleporter", "You see a teleporter with a sign near it saying (teleport), but you don't know where it goes or if it is a trap.");
-
+            Room startingPoint = new Room("Entry Way", "You realize you are stuck in a game and need something and then to say victory to win. Looking around you see that you \n are in a lovely marble enterance to the Library");
+            Room r1 = new Room("Field", "Lovely Place to Be");
+            Room r2 = new Room("Elm Stree", "Its Scary");
+            Room r3 = new Room("House", "It is tiny and white and there is an open window so you can enter the house");
+            Room r4 = new Room("School", "There are a lot of textbooks and a window that you can't get through");
+            Room r5 = new Room("Darkness???", "You could swear that it was still daytime, yet there is not a speck of light.");
+            Room r6 = new Room("Chicken???", "In a massive open area you see a random chicken");
+            Room r7 = new Room("Treehouse", "There is no way to enter it, but it looks neat.");
+            Room r8 = new Room("Beach", "It is very sandy, and the water looks undrinkable");
+            Room r9 = new Room("Restaurant", "No one is here, yet you can see tons of tasty free pizza. Though eating too much pizza could kill you, you are still very hungry.");
+            Room r10 = new Room("Inside the house", "You can see nothing except for the window you entered through.");
+            Room r11 = new Room("Another School???", "There is one window that you can't get through and tons of school supplies inside.");
+            Room r12 = new Room("Light?", "There is so much light it is blinding and you can't se anything.");
+            Room r13 = new Room("Cave", "You see a cave north of your position, but the ground leading up that way is impassable");
+            Room r14 = new Room("Massive Tree", "The tree is huge, and it looks like it could walk but it is sleeping, luckily the gound is impassable North so you are safe.");
+            Room r15 = new Room("Bridge to nowhere", "There is just a random bridge here that goes into the air and ends in the air, so you won't get across anything just most likely mess up and die. Also, you can't go around it due to the impassable terrain.");
+            Room r16 = new Room("Teleporter", "You see a teleporter with a sign near it saying (teleport), but you don't know where it goes or if it is a trap.");
             //items for Zookkooz
             bool chicken = false;
             bool pizza = false;
