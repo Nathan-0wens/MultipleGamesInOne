@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
 
 namespace Games_CSharp
 {
